@@ -45,6 +45,7 @@ Collection of 6 specific graphical techniques whose purpose is to assess the val
 
 https://www.itl.nist.gov/div898/handbook/eda/section3/6plot.htm
 
+------------
 
 Project manager: Laura Horsfall Folmer 
 
