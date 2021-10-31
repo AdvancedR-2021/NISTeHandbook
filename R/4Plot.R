@@ -11,28 +11,29 @@
 
 library(ggplot2)
 library(tidyverse)
+library("ggpubr")
 
-fourPlot <- function(data) {
+fourPlot <- function(data, bins=11) {
 
-  data <- data
+  seq_plot <- ggplot(mapping = aes(x = 1:length(data), y = data)) +
+    labs(x = "RUN SEQUENCE PLOT Y", y = "") +
+    geom_line()
 
-  seq_plot <- data %>%
-    ggplot(mapping = aes(x = 1:length(Y), y = Y)) +
-    labs(x = "Index", y = "Transmittance") +
+  lag_plot <- ggplot(mapping = aes(x=data, y=lag(data,1))) +
+    labs(x = "LAG PLOT Y", y="") +
     geom_point(shape = 4)
-  #print(seq_plot)
 
-  data$Ylag <- lag(data$Y,1)
-
-  lag_plot <- data %>%
-    ggplot(mapping = aes(x=Ylag, y=Y)) +
-    labs(x = expression(Y[i-1]), y=expression(Y[i])) +
-    geom_point(shape = 4)
-  #print(lag_plot)
-
-  hist_plot <- data %>%
-    ggplot(mapping = aes(x=Y)) +
+  hist_plot <- ggplot(mapping = aes(x=data)) +
+    labs(x = "HISTOGRAM Y", y="") +
     geom_histogram()
-  print(hist_plot)
+
+  quant_plot <- ggplot(mapping = aes(sample=data)) +
+    labs(x = "NORMAL PROBABILITY PLOT Y") +
+    geom_qq(geom = "line")
+
+  fig <- ggarrange(seq_plot,lag_plot,hist_plot,quant_plot, ncol=2,nrow=2)
+  annotate_figure(fig, top = text_grob("4-PLOT",size=16))
+
 }
+
 
