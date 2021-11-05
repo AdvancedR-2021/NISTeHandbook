@@ -1,13 +1,21 @@
-#' @title 4Plot
+#' @title 4-Plot
 #'
-#' @param data
+#' The 4-plot is an EDA technique for testing underlying assumptions. The 4-plot consists of four plots.
+#' A run sequence plot, which is a simple plot of x and y values.
+#' A lag plot.
+#' A histogram.
+#' A normal probability plot.
 #'
-#' @return
-#' @export
+#' @param data A list of data values
+#' @param bins Number of bins to show in the histogram
+#'
+#' @return A frame with 4 plots
 #'
 #' @examples
+#' x <- LEW.DAT$Deflection
+#' fourPlot(x)
 #'
-#'
+#' @export
 
 library(ggplot2)
 library(tidyverse)
