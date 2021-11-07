@@ -16,10 +16,10 @@ A frame with 4 plots
 }
 \description{
 The 4-plot is an EDA technique for testing underlying assumptions. The 4-plot consists of four plots.
-A run sequence plot, which is a simple plot of x and y values.
-A lag plot.
-A histogram.
-A normal probability plot.
+A run sequence plot to answer the questions of whether or not the data has fixed location and/or fixed variation.
+A lag plot that show you whether or not the data is random.
+A histogram to test if the data follows a normal distribution.
+A normal probability plot that tests together with the histogram, if the data follows a normal distribution.
 }
 \examples{
 x <- LEW.DAT$Deflection
