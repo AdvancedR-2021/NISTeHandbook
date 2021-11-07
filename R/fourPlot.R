@@ -1,15 +1,15 @@
 
 library(ggplot2)
 library(tidyverse)
-library("ggpubr")
+library(ggpubr)
 
 #' fourPlot
 #'
 #' The 4-plot is an EDA technique for testing underlying assumptions. The 4-plot consists of four plots.
-#' A run sequence plot, which is a simple plot of x and y values.
-#' A lag plot.
-#' A histogram.
-#' A normal probability plot.
+#' A run sequence plot to answer the questions of whether or not the data has fixed location and/or fixed variation.
+#' A lag plot that show you whether or not the data is random.
+#' A histogram to test if the data follows a normal distribution.
+#' A normal probability plot that tests together with the histogram, if the data follows a normal distribution.
 #'
 #' @param data A list of data values
 #' @param bins Number of bins to show in the histogram
@@ -30,7 +30,7 @@ fourPlot <- function(data, bins=11) {
 
   lag_plot <- ggplot(mapping = aes(x=data, y=lag(data,1))) +
     labs(x = "LAG PLOT Y", y="") +
-    geom_point(shape = 4)
+    geom_point(shape = 4, na.rm = TRUE)
 
   hist_plot <- ggplot(mapping = aes(x=data)) +
     labs(x = "HISTOGRAM Y", y="") +

@@ -5,9 +5,17 @@ library(ggpubr)
 
 #' sixPlot
 #'
-#' @param data the data
+#' The 6-plot is a collection of 6 specific graphical techniques
+#' whose purpose is to assess the validity of a Y versus X fit.
+#' The 6-plot consists of six plots.
+#' Scatter plot of the response vs independent variables;
 #'
-#' @return what it returns
+#'
+#' @param X A list of X values
+#' @param Y A list of Y values
+#' @param bins Number of bins to show in the histogram
+#'
+#' @return A frame with 6 plots
 #'
 #' @examples
 #' X <- 1:100
@@ -16,14 +24,14 @@ library(ggpubr)
 #'
 #' @export
 
-sixPlot <- function(X, Y) {
+sixPlot <- function(X, Y, bins=30) {
   linfit <- lm(Y ~ X)
   pred_Y <- predict(linfit)
   resid <- residuals(linfit)
 
   scat_plot <- ggplot(mapping = aes(x = X, y = pred_Y)) +
     geom_point() +
-    labs(x = "PLOT Y VS X", y="")
+    labs(x = "PLOT Y PRED VS X", y="")
 
   res_x_plot <- ggplot(mapping = aes(x = X, y = resid)) +
     geom_point() +
@@ -34,11 +42,11 @@ sixPlot <- function(X, Y) {
     labs(x = "PLOT RES PRED", y="")
 
   lag_res_plot <- ggplot(mapping = aes(x = resid, y = lag(resid))) +
-    geom_point() +
+    geom_point(na.rm = TRUE) +
     labs(x = "LAG PLOT RES", y="")
 
   hist_res_plot <- ggplot(mapping = aes(x = resid)) +
-    geom_histogram() +
+    geom_histogram(bins=bins) +
     labs(x = "HISTOGRAM RES", y="")
 
   qq_plot <- ggplot(mapping = aes(sample=Y)) +
@@ -54,9 +62,4 @@ sixPlot <- function(X, Y) {
                    ncol=3,nrow=2)
   annotate_figure(fig, top = text_grob("6-PLOT",size=16))
 }
-
-X <- 1:100
-Y <- rnorm(100, X * 2, 50)
-
-sixPlot(X, Y)
 
