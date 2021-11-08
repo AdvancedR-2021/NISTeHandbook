@@ -42,7 +42,6 @@ fourPlot <- function(data, bins=11) {
 
   fig <- ggarrange(seq_plot,lag_plot,hist_plot,quant_plot, ncol=2,nrow=2)
   annotate_figure(fig, top = text_grob("4-PLOT",size=16))
-
 }
 
 
