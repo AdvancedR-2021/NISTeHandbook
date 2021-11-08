@@ -52,7 +52,7 @@ PPCC_tukey <- function(data) {
   cat(paste("Maximum value of the correlation coefficient", max_corcoeff, sep=" = "),
       paste(paste("Lambda", strrep(" ",37)),lambda, sep=" = "), sep = "\n")
 
-  cat("The distribution of your data is", pred_dist, sep=" ")
+  cat("The distribution of your data might be", pred_dist, sep=" ")
 
   ggplot(mapping = aes(x=xval, y=yval)) +
     geom_point(na.rm = TRUE)
