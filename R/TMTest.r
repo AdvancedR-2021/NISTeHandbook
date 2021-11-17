@@ -11,34 +11,12 @@
 #' 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
 #' Specify k, the number of outliers being tested.
 #' k = 3
-#' TMTest = function(x,k)
+#' TMTest(x,k)
 #'
+#' @export TMTest
 TMTest <- function(x,k){
-    tm <- function(x,k){
-      n = length(x)
-
-      ## Compute the absolute residuals.
-      r = abs(x - mean(x))
-
-      ## Sort data according to size of residual.
-      df = data.frame(x,r)
-      dfs = df[order(df$r),]
-
-      ## Create a subset of the data without the largest k values.
-      klarge = c((n-k+1):n)
-      subx = dfs$x[-klarge]
-
-      ## Compute the sums of squares.
-      ksub = (subx - mean(subx))**2
-      all = (df$x - mean(df$x))**2
-
-      ## Compute the test statistic.
-      ek = sum(ksub)/sum(all)
-      ek
-    }
   ## Call the function and compute value of test statistic for data.
   ekstat = tm(x,k)
-
   ## Compute critical value based on simulation.
   test = c(1:100)
   for (i in 1:100){
@@ -60,6 +38,7 @@ TMTest <- function(x,k){
   lst
 }
 
+#' @export
 print.tmtest <- function(x, ...){
   cat("\nResults of ", x$method, "\n")
   cat("--------------------------\n")
@@ -72,3 +51,28 @@ print.tmtest <- function(x, ...){
   invisible(x)
 }
 
+# Helpers -----------------------------------------------------------------
+
+tm <- function(x,k){
+
+  n = length(x)
+
+  ## Compute the absolute residuals.
+  r = abs(x - mean(x))
+
+  ## Sort data according to size of residual.
+  df = data.frame(x,r)
+  dfs = df[order(df$r),]
+
+  ## Create a subset of the data without the largest k values.
+  klarge = c((n-k+1):n)
+  subx = dfs$x[-klarge]
+
+  ## Compute the sums of squares.
+  ksub = (subx - mean(subx))**2
+  all = (df$x - mean(df$x))**2
+
+  ## Compute the test statistic.
+  ek = sum(ksub)/sum(all)
+  ek
+}
