@@ -62,11 +62,7 @@ sixPlot <- function(X, Y, bins=30) {
   sixplot_obj
 }
 
-<<<<<<< HEAD
 # Helpers -------------------------------
-
-=======
-
 #' @export
 print.6plot <- function(x, ...){
   fig <- ggarrange(x$scat_plot,
@@ -78,4 +74,4 @@ print.6plot <- function(x, ...){
   print(annotate_figure(fig, top = text_grob("6-PLOT",size=16)))
   invisible(x)
 }
->>>>>>> cee27b6375d62ef9675d349209c65bfb600b4939
+
