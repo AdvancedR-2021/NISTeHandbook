@@ -2,6 +2,7 @@
 
 export(PPCC)
 export(PPCC_tukey)
+export(TMTest)
 export(fourPlot)
 export(sixPlot)
 import(ggplot2)
