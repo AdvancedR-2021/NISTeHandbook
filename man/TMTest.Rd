@@ -2,26 +2,26 @@
 % Please edit documentation in R/TMTest.r
 \name{TMTest}
 \alias{TMTest}
-\title{Function to test for k outliers in both tails.}
+\title{Tietjen-Moore Test for Outliers}
 \usage{
 TMTest(x, k)
 }
 \arguments{
-\item{x}{univariate data}
+\item{x}{A list of univariate data.}
 
-\item{k}{number of suspected outliers}
+\item{k}{The number of suspected outliers.}
 }
 \value{
-An object that shows results of hypothesis
+An object that shows the result of the hypothesis.
 }
 \description{
-Function to test for k outliers in both tails.
+A function to test for k outliers in both tails.
 }
 \examples{
 x = c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05,
 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
 Specify k, the number of outliers being tested.
 k = 3
-TMTest = function(x,k)
+TMTest(x,k)
 
 }

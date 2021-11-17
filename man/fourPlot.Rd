@@ -2,24 +2,38 @@
 % Please edit documentation in R/fourPlot.R
 \name{fourPlot}
 \alias{fourPlot}
-\title{fourPlot}
+\title{Four Plot}
 \usage{
 fourPlot(data, bins = 11)
 }
 \arguments{
-\item{data}{A list of data values}
+\item{data}{A list of data values.}
 
-\item{bins}{Number of bins to show in the histogram}
+\item{bins}{Number of bins to show in the histogram.}
 }
 \value{
-A frame with 4 plots
+A frame with 4 plots.
 }
 \description{
-The 4-plot is an EDA technique for testing underlying assumptions. The 4-plot consists of four plots.
+The 4-plot is an EDA technique for testing underlying assumptions.
+}
+\details{
+The 4-plot outputs a frame with four plots.
 A run sequence plot to answer the questions of whether or not the data has fixed location and/or fixed variation.
 A lag plot that show you whether or not the data is random.
 A histogram to test if the data follows a normal distribution.
 A normal probability plot that tests together with the histogram, if the data follows a normal distribution.
+All plots are made with \code{ggplot2} and can be elaborated further if needed.
+
+\code{seq_plot} uses geom_line()
+
+\code{lag_plot} uses geom_point()
+
+\code{hist_plot} uses geom_histogram()
+
+\code{quant_plot} uses geom_qq()
+
+See the vignette for more details about this.
 }
 \examples{
 x <- LEW.DAT$Deflection
