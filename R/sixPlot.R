@@ -19,7 +19,7 @@ library(ggpubr)
 #'
 #' @examples
 #' X <- 1:100
-#' Y <- rnorm(x * 10, 0, 50)
+#' Y <- rnorm(100, x * 10, 50)
 #' sixPlot(X, Y)
 #'
 #' @export
@@ -53,13 +53,26 @@ sixPlot <- function(X, Y, bins=30) {
     labs(x = "NORM PROB PLOT RES") +
     geom_qq()
 
-  fig <- ggarrange(scat_plot,
-                   res_x_plot,
-                   res_pred_plot,
-                   lag_res_plot,
-                   hist_res_plot,
-                   qq_plot,
-                   ncol=3,nrow=2)
-  annotate_figure(fig, top = text_grob("6-PLOT",size=16))
+  sixplot_obj <- list(scat_plot = scat_plot,
+                       res_x_plot = res_x_plot,
+                       res_pred_plot = res_pred_plot,
+                       lag_res_plot = lag_res_plot,
+                       hist_res_plot = hist_res_plot,
+                       qq_plot = qq_plot)
+  class(sixplot_obj) <- "6plot"
+  print(sixplot_obj)
+  sixplot_obj
 }
 
+
+#' @export
+print.6plot <- function(x, ...){
+  fig <- ggarrange(x$scat_plot,
+                   x$res_x_plot,
+                   x$res_pred_plot,
+                   x$lag_res_plot,
+                   x$hist_res_plot,
+                   x$qq_plot,ncol=3,nrow=2)
+  print(annotate_figure(fig, top = text_grob("6-PLOT",size=16)))
+  invisible(x)
+}
