@@ -1,10 +1,14 @@
-#' Function to test for k outliers in both tails.
+#' Tietjen-Moore Test for Outliers
 #'
-#' @param x univariate data
-#' @param k number of suspected outliers
+#' A function to test for k outliers in both tails.
+#'
+#' @param x A list of univariate data
+#' @param k The number of suspected outliers
 #'
 #' @return An object that shows results of hypothesis
-#' @export
+#'
+#' @import stats
+#' @import ggplot2
 #'
 #' @examples
 #' x = c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05,
@@ -13,7 +17,8 @@
 #' k = 3
 #' TMTest(x,k)
 #'
-#' @export TMTest
+#' @export
+
 TMTest <- function(x,k){
   ## Call the function and compute value of test statistic for data.
   ekstat = tm(x,k)

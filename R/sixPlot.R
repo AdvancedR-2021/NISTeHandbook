@@ -64,7 +64,6 @@ sixPlot <- function(X, Y, bins=30) {
   sixplot_obj
 }
 
-# Helpers -------------------------------
 #' @export
 print.6plot <- function(x, ...){
   fig <- ggarrange(x$scat_plot,

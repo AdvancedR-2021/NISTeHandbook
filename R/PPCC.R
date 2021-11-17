@@ -1,9 +1,19 @@
 
-#' PPCC_tukey
+#' Tukey-Lambda PPCC Plot
 #'
-#' @param data A list of data values
+#' This function is useful for symmetric distributions. It can indicate what type of distribution your data follows,
+#' for example if the data is long-tailed or short-tailed, based on the lambda value, and it can further indicate several common distributions.
+#' The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution and you should follow up with PPCC and
+#' probability plots of the appropriate alternatives.
 #'
-#' @return what it returns
+#' @param data A list of data
+#'
+#' @return The function returns a Tukey Lambda PPCC plot, the maximum value of the correlation coefficient
+#' together with the corresponding lambda value and an indication of what kind of distribution your data might fallow.
+#'
+#' @example
+#' data <- NORMAL.DAT$Y
+#' PPCC_tukey(data)
 #'
 #' @export
 #'
@@ -44,10 +54,15 @@ PPCC_tukey <- function(data) {
   cat("The distribution of your data might be", pred_dist, sep=" ")
 
   ggplot(mapping = aes(x=xval, y=yval)) +
-    geom_point(na.rm = TRUE)
-
-} # Tukey Lambda PPCC can indicate what type of distribution your data follows, for example if the data is long-tailed or short-tailed, based on the lambda value.
-
+    geom_point(na.rm = TRUE) +
+    labs(x="Tukey Distribution Tail Length (Lambda)", y="Probability Plot Correlation Coefficient", title="(Tukey) PPCC Plot") +
+    theme(plot.title = element_text(hjust = 0.5))
+    #annotate("segment", x=0.5,
+    #          xend = lambda,
+    #          y= max_corcoeff+(length()), yend= max_corcoeff, arrow = arrow()) +
+    #annotate(geom="label", x=0.5,
+    #         y= 0.9, label = paste("Max. y-value = ", max_corcoeff, "\n", quote(lambda),"=", lambda))
+}
 
 #' PPCC
 #'

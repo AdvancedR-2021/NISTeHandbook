@@ -13,7 +13,7 @@
 #'
 #' @import ggplot2
 #' @import tidyverse
-#' @import qqpubr
+#' @import ggpubr
 #'
 #' @examples
 #' x <- LEW.DAT$Deflection
@@ -43,7 +43,6 @@ fourPlot <- function(data, bins=11) {
                       hist_plot = hist_plot,
                       quant_plot = quant_plot)
   class(fourplot_obj) <- "4plot"
-  print(fourplot_obj)
   fourplot_obj
 }
 
