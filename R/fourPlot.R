@@ -1,15 +1,28 @@
-#' fourPlot
+#' Four Plot
 #'
-#' The 4-plot is an EDA technique for testing underlying assumptions. The 4-plot consists of four plots.
+#' The 4-plot is an EDA technique for testing underlying assumptions.
+#'
+#' @param data A list of data values.
+#' @param bins Number of bins to show in the histogram.
+#'
+#' @return A frame with 4 plots.
+#'
+#' @details The 4-plot outputs a frame with four plots.
 #' A run sequence plot to answer the questions of whether or not the data has fixed location and/or fixed variation.
 #' A lag plot that show you whether or not the data is random.
 #' A histogram to test if the data follows a normal distribution.
 #' A normal probability plot that tests together with the histogram, if the data follows a normal distribution.
+#' All plots are made with `ggplot2` and can be elaborated further if needed.
 #'
-#' @param data A list of data values
-#' @param bins Number of bins to show in the histogram
+#' `seq_plot` uses geom_line()
 #'
-#' @return A frame with 4 plots
+#' `lag_plot` uses geom_point()
+#'
+#' `hist_plot` uses geom_histogram()
+#'
+#' `quant_plot` uses geom_qq()
+#'
+#' See the vignette for more details about this.
 #'
 #' @import ggplot2
 #' @import tidyverse
@@ -32,7 +45,7 @@ fourPlot <- function(data, bins=11) {
 
   hist_plot <- ggplot(mapping = aes(x=data)) +
     labs(x = "HISTOGRAM Y", y="") +
-    geom_histogram()
+    geom_histogram(bins=bins)
 
   quant_plot <- ggplot(mapping = aes(sample=data)) +
     labs(x = "NORMAL PROBABILITY PLOT Y") +
