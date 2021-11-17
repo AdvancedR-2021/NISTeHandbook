@@ -1,0 +1,135 @@
+---
+title: "NISTeHandbook"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{NISTeHandbook}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+# Introduction to package {#intro}
+
+The NISTeHandbook R package seeks to implement methods from the NIST/SEMATECH e-Handbook of Statistical Methods. 
+
+As of the current version only 4 methods have been implemented:
+
+* [4-plot](https://www.itl.nist.gov/div898/handbook/eda/section2/eda23.htm)
+
+* [6-plot](https://www.itl.nist.gov/div898/handbook/eda/section3/6plot.htm)
+
+* [Tietjen-Moore Test for outliers](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h2.htm)
+
+* [Probability Plot Correlation Coefficient Plot](https://www.itl.nist.gov/div898/handbook/eda/section3/ppccplot.htm)
+
+
+# 4-plot
+
+4-plot and 6-plot are very similar EDA methods for testing assumptions on a given data.
+
+
+Let us start with the 4 plot, using the example from the eNist website. We use the [LEW](https://www.itl.nist.gov/div898/handbook/datasets/LEW.DAT) dataset, which [describes](https://www.itl.nist.gov/div898/strd/univ/addinfo/lew.html) a study of the physical behaviour of steel-concrete beams under periodic load. The response variable is deflection from a center point, and 200 observations were collected.
+
+We first load the RPackage:
+```{r}
+library(NISTeHandbook)
+```
+
+The package provides the data set directly.
+
+```{r}
+head(LEW.DAT)
+```
+
+To use the 4-plot function we simply provide the observations to the function:
+
+```{r}
+fourplots <- fourPlot(LEW.DAT$Deflection)
+fourplots
+```
+
+
+The function outputs a 4plot object that contains every plot as a ggplot object, such that you can modify each individual plot. Printing the 4plot object gives the plot shown above. The number of bins is set to a default of 11, but we can specify other bin sizes in the 4plot function.
+
+```{r}
+fourplots <- fourPlot(LEW.DAT$Deflection, bins = 20)
+```
+
+## Using individual plots:
+
+To use only a specific or modify plots we can access them in the 4plot object. Let us take the sequence plot.
+
+```{r}
+fourplots$seq_plot
+```
+
+If we wish to modify any of the plots we can use ggplot2:
+
+```{r}
+fourplots$seq_plot + geom_line(color="red")
+```
+For finding out the specific geoms of fourplot, see the documentation in ?fourplots.
+
+We can then modify and save these to change our 4plot.
+
+```{r}
+fourplots$seq_plot <- fourplots$seq_plot + geom_line(color="red")
+fourplots
+```
+
+For assumptions and conclusions of the plots you should consult the handbook.
+
+# 6-plot
+
+The 6-plot behaves in a very similar way to the 4-plot. The function attempts to do a linear Y versus X fit. Let us again load data from the handbook website, in another fashion:
+
+```{r}
+PONTIUS <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/PONTIUS.DAT", skip=25)
+head(PONTIUS)
+```
+
+We are looking at a response variable, beam deflections, V1 at various different loads V2. To create the six plot we input the response and the explanatory variable.
+
+```{r}
+sixPlot(PONTIUS$V2, PONTIUS$V1)
+```
+
+
+sixPlot returns a sixPlot object that contains the 6 ggplots, that can be manipulated in a similar manner to the 4plot. 
+
+
+
+# Tietjen-Moore Test for outliers
+
+Imagine having approximately normal distributed data, and you want to check for outliers. Then the Tietjen-Moore test is suited for you. You can use the TMTest to test for exactly $k$ outliers, no more, no less. 
+
+Let us again take data from the [handbook](https://www.itl.nist.gov/div898/handbook/datasets/TIETMOO1.DAT) (Which Tietjen and Moore also used in the original paper): 
+
+```{r}
+x = c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05, 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
+```
+
+The x-values are observations of vertical semi-diameters of the planet Venus...
+
+After doing some EDA, we suspect there might be two outliers.
+
+
+```{r}
+TMTest(x,2)
+```
+
+The TMTest function shows a normal QQ plot, to remind us that the test is only valid on approximately normal distributed data. We also see the two suspected outliers.
+
+The print shows us that we can conclude that the suspected outliers are indeed outliers.
+
+
+# Tukey-Lambda PPCC Plot
+
