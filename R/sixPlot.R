@@ -1,8 +1,4 @@
 
-library(ggplot2)
-library(tidyverse)
-library(ggpubr)
-
 #' sixPlot
 #'
 #' The 6-plot is a collection of 6 specific graphical techniques
@@ -17,6 +13,8 @@ library(ggpubr)
 #'
 #' @return A frame with 6 plots
 #'
+#' @import ggplot2 stats ggpubr
+#'
 #' @examples
 #' X <- 1:100
 #' Y <- rnorm(x * 10, 0, 50)
@@ -29,7 +27,7 @@ sixPlot <- function(X, Y, bins=30) {
   pred_Y <- predict(linfit)
   resid <- residuals(linfit)
 
-  scat_plot <- ggplot(mapping = aes(x = X, y = pred_Y)) +
+  scat_plot <- ggplot2::ggplot(mapping = aes(x = X, y = pred_Y)) +
     geom_point() +
     labs(x = "PLOT Y PRED VS X", y="")
 
@@ -62,4 +60,6 @@ sixPlot <- function(X, Y, bins=30) {
                    ncol=3,nrow=2)
   annotate_figure(fig, top = text_grob("6-PLOT",size=16))
 }
+
+# Helpers -------------------------------
 

@@ -1,14 +1,3 @@
-# Help function
-U_i <- function(ordered_data){
-  n <- length(ordered_data)
-  m_i <- rep(NA, n)
-  m_i[n] <- 0.5**(1/n)
-  m_i[1] <- 1 - m_i[n]
-  for (i in 2:n-1){
-    m_i[i] <- (i - 0.3175)/(n + 0.365)
-  }
-  m_i
-}
 
 #' PPCC_tukey
 #'
@@ -60,6 +49,16 @@ PPCC_tukey <- function(data) {
 } # Tukey Lambda PPCC can indicate what type of distribution your data follows, for example if the data is long-tailed or short-tailed, based on the lambda value.
 
 
+#' PPCC
+#'
+#' @param data the data
+#' @param distribution the distribution
+#'
+#' @return plot
+#' @export
+#'
+#' @examples
+#' example here
 PPCC <- function(data, distribution) {
   data <- sort(data)
   xval <- c()
@@ -67,10 +66,10 @@ PPCC <- function(data, distribution) {
 
   for (i in seq(0.1,10,0.01)) {
     if (distribution == "weibull") {
-      yval <- c(yval, cor(dweibull(x=U_i(data),shape=i), data))
+      yval <- c(yval, cor(qweibull(p=U_i(data),shape=i), data))
     }
     if (distribution == "gamma") {
-      yval <- c(yval, cor(dgamma(x=U_i(data),shape=i), data))
+      yval <- c(yval, cor(qgamma(p=U_i(data),shape=i), data))
     }
     xval <- c(xval, i)
   }
@@ -80,7 +79,17 @@ PPCC <- function(data, distribution) {
     geom_point(na.rm = TRUE)
 } # The maximum correlation coefficient corresponds to the optimal value of the shape parameter.
 
-
+ProbPlot <- function(data, distribution, shape) {
+  data <- sort(data)
+  if (distribution == "weibull") {
+    print(ggplot(mapping = aes(y=data, x=qweibull(p=U_i(data),shape=shape))) +
+            geom_line())
+  }
+  if (distribution == "gamma") {
+    print(ggplot(mapping = aes(y=data, x=qgamma(p=U_i(data),shape=shape))) +
+            geom_line())
+  }
+}
 
 
 # The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution.
@@ -91,4 +100,15 @@ PPCC <- function(data, distribution) {
 # https://www.itl.nist.gov/div898/handbook/eda/section3/probplot.htm
 # For the Tukey Lambda dist: https://www.itl.nist.gov/div898/handbook/eda/section3/eda366f.htm
 
+# Helpers ----------------------------------
 
+U_i <- function(ordered_data){
+  n <- length(ordered_data)
+  m_i <- rep(NA, n)
+  m_i[n] <- 0.5**(1/n)
+  m_i[1] <- 1 - m_i[n]
+  for (i in 2:n-1){
+    m_i[i] <- (i - 0.3175)/(n + 0.365)
+  }
+  m_i
+}
