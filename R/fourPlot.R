@@ -1,6 +1,3 @@
-library(ggplot2)
-library(tidyverse)
-library(ggpubr)
 #' fourPlot
 #'
 #' The 4-plot is an EDA technique for testing underlying assumptions. The 4-plot consists of four plots.
@@ -13,6 +10,10 @@ library(ggpubr)
 #' @param bins Number of bins to show in the histogram
 #'
 #' @return A frame with 4 plots
+#'
+#' @import ggplot2
+#' @import tidyverse
+#' @import qqpubr
 #'
 #' @examples
 #' x <- LEW.DAT$Deflection

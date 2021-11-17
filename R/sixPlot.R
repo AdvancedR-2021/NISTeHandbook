@@ -13,7 +13,9 @@
 #'
 #' @return A frame with 6 plots
 #'
-#' @import ggplot2 stats ggpubr
+#' @import ggplot2
+#' @import stats
+#' @import ggpubr
 #'
 #' @examples
 #' X <- 1:100
