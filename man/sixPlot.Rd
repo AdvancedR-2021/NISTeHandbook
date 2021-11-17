@@ -2,19 +2,19 @@
 % Please edit documentation in R/sixPlot.R
 \name{sixPlot}
 \alias{sixPlot}
-\title{sixPlot}
+\title{Six Plot}
 \usage{
 sixPlot(X, Y, bins = 30)
 }
 \arguments{
-\item{X}{A list of X values}
+\item{X}{A list of X values.}
 
-\item{Y}{A list of Y values}
+\item{Y}{A list of Y values.}
 
-\item{bins}{Number of bins to show in the histogram}
+\item{bins}{Number of bins to show in the histogram.}
 }
 \value{
-A frame with 6 plots
+A frame with 6 plots.
 }
 \description{
 The 6-plot is a collection of 6 specific graphical techniques
@@ -24,7 +24,7 @@ Scatter plot of the response vs independent variables;
 }
 \examples{
 X <- 1:100
-Y <- rnorm(x * 10, 0, 50)
+Y <- rnorm(100, x * 10, 50)
 sixPlot(X, Y)
 
 }

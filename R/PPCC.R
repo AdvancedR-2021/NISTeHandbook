@@ -1,4 +1,3 @@
-
 #' Tukey-Lambda PPCC Plot
 #'
 #' This function is useful for symmetric distributions. It can indicate what type of distribution your data follows,
@@ -6,12 +5,15 @@
 #' The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution and you should follow up with PPCC and
 #' probability plots of the appropriate alternatives.
 #'
-#' @param data A list of data
+#' @param data A list of data.
 #'
 #' @return The function returns a Tukey Lambda PPCC plot, the maximum value of the correlation coefficient
 #' together with the corresponding lambda value and an indication of what kind of distribution your data might fallow.
 #'
-#' @example
+#' @import ggplot2
+#' @import stats
+#'
+#' @examples
 #' data <- NORMAL.DAT$Y
 #' PPCC_tukey(data)
 #'
@@ -64,16 +66,21 @@ PPCC_tukey <- function(data) {
     #         y= 0.9, label = paste("Max. y-value = ", max_corcoeff, "\n", quote(lambda),"=", lambda))
 }
 
-#' PPCC
+#' PPCC Plot
 #'
-#' @param data the data
-#' @param distribution the distribution
+#' @param data A list of data.
+#' @param distribution The distribution
 #'
 #' @return plot
-#' @export
+#'
+#' @import ggplot2
+#' @import stats
 #'
 #' @examples
 #' example here
+#'
+#' @export
+
 PPCC <- function(data, distribution) {
   data <- sort(data)
   xval <- c()
@@ -88,11 +95,20 @@ PPCC <- function(data, distribution) {
     }
     xval <- c(xval, i)
   }
-  print(max(yval, na.rm=TRUE))
-  print(xval[which.max(yval)])
+  cat(paste("Maximum value of the correlation coefficient", round(max(yval, na.rm=TRUE), digits=3), sep=" = "),
+      paste(paste("Optimal value of the shape parameter", strrep(" ",7)), round(xval[which.max(yval)], digits=3), sep=" = "), sep="\n")
+
   ggplot(mapping = aes(x=xval, y=yval)) +
-    geom_point(na.rm = TRUE)
-} # The maximum correlation coefficient corresponds to the optimal value of the shape parameter.
+    geom_point(na.rm = TRUE) +
+    labs(x="Possible shape values (Lambda)", y="Probability Plot Correlation Coefficient", title=paste(distribution, "PPCC Plot")) +
+    theme(plot.title = element_text(hjust = 0.5))
+}
+
+
+
+
+
+
 
 ProbPlot <- function(data, distribution, shape) {
   data <- sort(data)

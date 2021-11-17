@@ -2,16 +2,25 @@
 % Please edit documentation in R/PPCC.R
 \name{PPCC_tukey}
 \alias{PPCC_tukey}
-\title{PPCC_tukey}
+\title{Tukey-Lambda PPCC Plot}
 \usage{
 PPCC_tukey(data)
 }
 \arguments{
-\item{data}{A list of data values}
+\item{data}{A list of data.}
 }
 \value{
-what it returns
+The function returns a Tukey Lambda PPCC plot, the maximum value of the correlation coefficient
+together with the corresponding lambda value and an indication of what kind of distribution your data might fallow.
 }
 \description{
-PPCC_tukey
+This function is useful for symmetric distributions. It can indicate what type of distribution your data follows,
+for example if the data is long-tailed or short-tailed, based on the lambda value, and it can further indicate several common distributions.
+The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution and you should follow up with PPCC and
+probability plots of the appropriate alternatives.
+}
+\examples{
+data <- NORMAL.DAT$Y
+PPCC_tukey(data)
+
 }

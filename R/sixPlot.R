@@ -1,5 +1,4 @@
-
-#' sixPlot
+#' Six Plot
 #'
 #' The 6-plot is a collection of 6 specific graphical techniques
 #' whose purpose is to assess the validity of a Y versus X fit.
@@ -7,11 +6,11 @@
 #' Scatter plot of the response vs independent variables;
 #'
 #'
-#' @param X A list of X values
-#' @param Y A list of Y values
-#' @param bins Number of bins to show in the histogram
+#' @param X A list of X values.
+#' @param Y A list of Y values.
+#' @param bins Number of bins to show in the histogram.
 #'
-#' @return A frame with 6 plots
+#' @return A frame with 6 plots.
 #'
 #' @import ggplot2
 #' @import stats
@@ -60,7 +59,6 @@ sixPlot <- function(X, Y, bins=30) {
                        hist_res_plot = hist_res_plot,
                        qq_plot = qq_plot)
   class(sixplot_obj) <- "6plot"
-  print(sixplot_obj)
   sixplot_obj
 }
 

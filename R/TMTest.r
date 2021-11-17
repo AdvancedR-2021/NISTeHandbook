@@ -2,10 +2,10 @@
 #'
 #' A function to test for k outliers in both tails.
 #'
-#' @param x A list of univariate data
-#' @param k The number of suspected outliers
+#' @param x A list of univariate data.
+#' @param k The number of suspected outliers.
 #'
-#' @return An object that shows results of hypothesis
+#' @return An object that shows the result of the hypothesis.
 #'
 #' @import stats
 #' @import ggplot2

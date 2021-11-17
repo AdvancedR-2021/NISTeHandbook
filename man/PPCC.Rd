@@ -2,21 +2,22 @@
 % Please edit documentation in R/PPCC.R
 \name{PPCC}
 \alias{PPCC}
-\title{PPCC}
+\title{PPCC Plot}
 \usage{
 PPCC(data, distribution)
 }
 \arguments{
-\item{data}{the data}
+\item{data}{A list of data.}
 
-\item{distribution}{the distribution}
+\item{distribution}{The distribution}
 }
 \value{
 plot
 }
 \description{
-PPCC
+PPCC Plot
 }
 \examples{
 example here
+
 }
