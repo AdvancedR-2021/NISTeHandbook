@@ -1,16 +1,15 @@
-#' Six Plot
+#' @title Six Plot
 #'
-#' The 6-plot is a collection of 6 specific graphical techniques
+#' @description The 6-plot is a collection of 6 specific graphical techniques
 #' whose purpose is to assess the validity of a Y versus X fit.
-#' The 6-plot consists of six plots.
-#' Scatter plot of the response vs independent variables;
-#'
 #'
 #' @param X A list of X values.
 #' @param Y A list of Y values.
 #' @param bins Number of bins to show in the histogram.
 #'
 #' @return A frame with 6 plots.
+#'
+#' @usage sixPlot(X, Y, bins=30)
 #'
 #' @import ggplot2
 #' @import stats
@@ -24,44 +23,56 @@
 #' @export
 
 sixPlot <- function(X, Y, bins=30) {
+  # Fit the best linear model on the data and save predicted values and residuals
   linfit <- lm(Y ~ X)
   pred_Y <- predict(linfit)
   resid <- residuals(linfit)
 
+  # Scatter plot of response vs predicted values made with geom_point
   scat_plot <- ggplot2::ggplot(mapping = aes(x = X, y = pred_Y)) +
     geom_point() +
     labs(x = "PLOT Y PRED VS X", y="")
 
+  # Scatter plot of residuals vs independent values made with geom_point
   res_x_plot <- ggplot(mapping = aes(x = X, y = resid)) +
     geom_point() +
     labs(x = "PLOT RES X", y="")
 
+  # Scatter plot of residuals vs predicted values made with geom_point
   res_pred_plot <- ggplot(mapping = aes(x = pred_Y, y = resid)) +
     geom_point() +
     labs(x = "PLOT RES PRED", y="")
 
+  # Lag plot of residuals made with geom_point
   lag_res_plot <- ggplot(mapping = aes(x = resid, y = lag(resid))) +
     geom_point(na.rm = TRUE) +
     labs(x = "LAG PLOT RES", y="")
 
+  # Histogram of residuals made with geom_histogram
   hist_res_plot <- ggplot(mapping = aes(x = resid)) +
     geom_histogram(bins=bins) +
     labs(x = "HISTOGRAM RES", y="")
 
+  # Quantile plot of residuals made with geom_qq
   qq_plot <- ggplot(mapping = aes(sample=Y)) +
     labs(x = "NORM PROB PLOT RES") +
     geom_qq()
 
+  # Put all plots into a list
   sixplot_obj <- list(scat_plot = scat_plot,
                        res_x_plot = res_x_plot,
                        res_pred_plot = res_pred_plot,
                        lag_res_plot = lag_res_plot,
                        hist_res_plot = hist_res_plot,
                        qq_plot = qq_plot)
+
+  # Assign class "6plot" to list
   class(sixplot_obj) <- "6plot"
+
   sixplot_obj
 }
 
+# Print function for class "6plot"
 #' @export
 print.6plot <- function(x, ...){
   fig <- ggarrange(x$scat_plot,

@@ -4,10 +4,10 @@
 \alias{TMTest}
 \title{Tietjen-Moore Test for Outliers}
 \usage{
-TMTest(x, k)
+TMTest(data, k)
 }
 \arguments{
-\item{x}{A list of univariate data.}
+\item{data}{A list of univariate data.}
 
 \item{k}{The number of suspected outliers.}
 }
@@ -17,11 +17,16 @@ An object that shows the result of the hypothesis.
 \description{
 A function to test for k outliers in both tails.
 }
+\details{
+The Tietjen-Moore test is used to detect multiple outliers in a univariate data set
+that follows an approximately normal distribution. If testing for a single outlier, the Tietjen-Moore
+test is equivalent to the Grubbs' test.
+}
 \examples{
 x = c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05,
 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
 Specify k, the number of outliers being tested.
 k = 3
-TMTest(x,k)
+TMTest(data=x,k=k)
 
 }

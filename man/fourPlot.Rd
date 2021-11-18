@@ -4,7 +4,7 @@
 \alias{fourPlot}
 \title{Four Plot}
 \usage{
-fourPlot(data, bins = 11)
+fourPlot(data, bins=11)
 }
 \arguments{
 \item{data}{A list of data values.}

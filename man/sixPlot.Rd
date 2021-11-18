@@ -4,7 +4,7 @@
 \alias{sixPlot}
 \title{Six Plot}
 \usage{
-sixPlot(X, Y, bins = 30)
+sixPlot(X, Y, bins=30)
 }
 \arguments{
 \item{X}{A list of X values.}
@@ -19,8 +19,6 @@ A frame with 6 plots.
 \description{
 The 6-plot is a collection of 6 specific graphical techniques
 whose purpose is to assess the validity of a Y versus X fit.
-The 6-plot consists of six plots.
-Scatter plot of the response vs independent variables;
 }
 \examples{
 X <- 1:100
