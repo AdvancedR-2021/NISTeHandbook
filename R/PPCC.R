@@ -63,11 +63,6 @@ PPCC_tukey <- function(data) {
     geom_point(na.rm = TRUE) +
     labs(x="Tukey Distribution Tail Length (Lambda)", y="Probability Plot Correlation Coefficient", title="(Tukey) PPCC Plot") +
     theme(plot.title = element_text(hjust = 0.5))
-    #annotate("segment", x=0.5,
-    #          xend = lambda,
-    #          y= max_corcoeff+(length()), yend= max_corcoeff, arrow = arrow()) +
-    #annotate(geom="label", x=0.5,
-    #         y= 0.9, label = paste("Max. y-value = ", max_corcoeff, "\n", quote(lambda),"=", lambda))
 }
 
 #' @title PPCC Plot
@@ -76,19 +71,23 @@ PPCC_tukey <- function(data) {
 #' for a distributional family that best describes the data set.
 #'
 #' @param data A list of data.
-#' @param distribution The distribution of your data
+#' @param distribution The distribution that best describes your data.
 #'
-#' @return plot
+#' @return A Probability Plot Correlation Coefficient Plot.
 #'
-#' @details
+#' @details Firstly, you should your data through the `tukey_PPCC`-function to find an appropriate distribution
+#' for your data. Then the PPCC plot is used first to find a good value of the shape parameter, and lastly
+#' the probability plot (for example, use the function `ProbPlot`) should then be generated to find estimates of the location and scale parameters
+#' and in addition to provide a graphical assessment of the adequacy of the distributional fit.
 #'
-#' @usage
+#' @usage PPCC(data, distribution)
 #'
 #' @import ggplot2
 #' @import stats
 #'
 #' @examples
-#' example here
+#' data <- RANDWEIB.DAT$Y
+#' PPCC(data, "weibull")
 #'
 #' @export
 
@@ -115,38 +114,6 @@ PPCC <- function(data, distribution) {
     theme(plot.title = element_text(hjust = 0.5))
 }
 
-
-#' @title Probability Plot
-#'
-#' @description
-#'
-#' @param data
-#' @param distribution
-#' @param shape
-#'
-#' @return
-#'
-#' @details
-#'
-#' @usage
-#'
-#' @examples
-#'
-#' @export
-ProbPlot <- function(data, distribution, shape) {
-  data <- sort(data)
-  if (distribution == "weibull") {
-    weib_plot <- ggplot(mapping = aes(y=data, x=qweibull(p=U_i(data),shape=shape))) +
-            geom_line()
-    weib_plot
-  }
-  if (distribution == "gamma") {
-    gamma_plot <- ggplot(mapping = aes(y=data, x=qgamma(p=U_i(data),shape=shape))) +
-            geom_line()
-    gamma_plot
-  }
-
-}
 
 # Helpers ----------------------------------
 
