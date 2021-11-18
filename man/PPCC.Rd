@@ -23,6 +23,8 @@ Firstly, you should your data through the \code{tukey_PPCC}-function to find an 
 for your data. Then the PPCC plot is used first to find a good value of the shape parameter, and lastly
 the probability plot (for example, use the function \code{ProbPlot}) should then be generated to find estimates of the location and scale parameters
 and in addition to provide a graphical assessment of the adequacy of the distributional fit.
+
+You can only use data from either a weibull or gamma distribution, so far.
 }
 \examples{
 data <- RANDWEIB.DAT$Y
