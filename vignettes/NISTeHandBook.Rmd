@@ -133,3 +133,7 @@ The print shows us that we can conclude that the suspected outliers are indeed o
 
 # Tukey-Lambda PPCC Plot
 
+If your teacher has told you to find an appropriate distribution for your data, you might have come across the PPCC page in the Engineering Statistics handbook. It mentions that you can use a Tukey-Lambda PPCC plot for symmetric distributions. 
+
+A PPCC plot is a graphical technique 
+
