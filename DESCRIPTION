@@ -1,14 +1,17 @@
 Package: NISTeHandbook
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Implements Statistical Methods from the NIST Handbook
+Version: 0.0.1
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Laura", "Folmer", , "201905054@post.au.dk", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Tony", "Hin", , "201905921@post.au.dk", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package implements 4 methods from the NIST Handbook. 
 Depends:
-  tidyverse,
-  ggplot2,
-  ggpubr
+    tidyverse,
+    ggplot2,
+    ggpubr,
+    R (>= 2.10)
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
