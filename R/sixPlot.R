@@ -24,39 +24,39 @@
 
 sixPlot <- function(X, Y, bins=30) {
   # Fit the best linear model on the data and save predicted values and residuals
-  linfit <- lm(Y ~ X)
-  pred_Y <- predict(linfit)
-  resid <- residuals(linfit)
+  linfit <- stats::lm(Y ~ X)
+  pred_Y <- stats::predict(linfit)
+  resid <- stats::residuals(linfit)
 
   # Scatter plot of response vs predicted values made with geom_point
-  scat_plot <- ggplot2::ggplot(mapping = aes(x = X, y = pred_Y)) +
-    geom_point() +
-    labs(x = "PLOT Y PRED VS X", y="")
+  scat_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = X, y = pred_Y)) +
+    ggplot2::geom_point() +
+    ggplot2::labs(x = "PLOT Y PRED VS X", y="")
 
   # Scatter plot of residuals vs independent values made with geom_point
-  res_x_plot <- ggplot(mapping = aes(x = X, y = resid)) +
-    geom_point() +
-    labs(x = "PLOT RES X", y="")
+  res_x_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = X, y = resid)) +
+    ggplot2::geom_point() +
+    ggplot2::labs(x = "PLOT RES X", y="")
 
   # Scatter plot of residuals vs predicted values made with geom_point
-  res_pred_plot <- ggplot(mapping = aes(x = pred_Y, y = resid)) +
-    geom_point() +
-    labs(x = "PLOT RES PRED", y="")
+  res_pred_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = pred_Y, y = resid)) +
+    ggplot2::geom_point() +
+    ggplot2::labs(x = "PLOT RES PRED", y="")
 
   # Lag plot of residuals made with geom_point
-  lag_res_plot <- ggplot(mapping = aes(x = resid, y = lag(resid))) +
-    geom_point(na.rm = TRUE) +
-    labs(x = "LAG PLOT RES", y="")
+  lag_res_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = resid, y = stats::lag(resid))) +
+    ggplot2::geom_point(na.rm = TRUE) +
+    ggplot2::labs(x = "LAG PLOT RES", y="")
 
   # Histogram of residuals made with geom_histogram
-  hist_res_plot <- ggplot(mapping = aes(x = resid)) +
-    geom_histogram(bins=bins) +
-    labs(x = "HISTOGRAM RES", y="")
+  hist_res_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = resid)) +
+    ggplot2::geom_histogram(bins=bins) +
+    ggplot2::labs(x = "HISTOGRAM RES", y="")
 
   # Quantile plot of residuals made with geom_qq
-  qq_plot <- ggplot(mapping = aes(sample=Y)) +
-    labs(x = "NORM PROB PLOT RES") +
-    geom_qq()
+  qq_plot <- ggplot2::ggplot(mapping = ggplot2::aes(sample=Y)) +
+    ggplot2::labs(x = "NORM PROB PLOT RES") +
+    ggplot2::geom_qq()
 
   # Put all plots into a list
   sixplot_obj <- list(scat_plot = scat_plot,
@@ -75,13 +75,13 @@ sixPlot <- function(X, Y, bins=30) {
 # Print function for class "6plot"
 #' @export
 print.6plot <- function(x, ...){
-  fig <- ggarrange(x$scat_plot,
+  fig <- ggpubr::ggarrange(x$scat_plot,
                    x$res_x_plot,
                    x$res_pred_plot,
                    x$lag_res_plot,
                    x$hist_res_plot,
                    x$qq_plot,ncol=3,nrow=2)
-  print(annotate_figure(fig, top = text_grob("6-PLOT",size=16)))
+  print(ggpubr::annotate_figure(fig, top = ggpubr::text_grob("6-PLOT",size=16)))
   invisible(x)
 }
 
