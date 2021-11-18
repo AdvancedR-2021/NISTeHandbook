@@ -135,5 +135,35 @@ The print shows us that we can conclude that the suspected outliers are indeed o
 
 If your teacher has told you to find an appropriate distribution for your data, you might have come across the PPCC page in the Engineering Statistics handbook. It mentions that you can use a Tukey-Lambda PPCC plot for symmetric distributions. 
 
-A PPCC plot is a graphical technique 
+A PPCC plot is a graphical technique for identifying a good value for a shape parameter in a distribution. The Tukey-Lambda distribution has shape parameter $\lambda$ and is used to indicate several common distributions. 
 
+
+1. $\lambda=-1$ : distribution is approximately Cauchy
+2. $\lambda=0$ : distribution is exactly logistic
+3. $\lambda=0.14$ : distribution is approximately normal
+4. $\lambda=0.5$ : distribution is U-shaped
+5. $\lambda=1:$ distribution is exactly uniform
+
+If we have no idea of which distribution to fit our data, we can then use a Tukey-Lambda PPCC plot. Let us generate some weibull data:
+
+```{r}
+set.seed(123)
+data <- rnorm(500)
+```
+
+We now imagine that we do not know how that data was generated.
+
+We can then use PPCC_tukey 
+```{r}
+fourPlot(data)
+```
+
+We observe that the distribution is symmetric, and the normal probability plot suggests that is it normal. But is it really normal?
+
+Let us ask the Tukey:
+
+```{r}
+PPCC_tukey(data)
+```
+
+We get a Tukey-Lambda PPCC plot, showing the correlation coefficient for different values of $\lambda$. The print shows that the highest correlation is 0.999 and that was at $\lambda = 0.14$. It also conveniently tell us that our data is indeed normal.
