@@ -31,12 +31,12 @@ tmTest <- function(data,k){
   ## Compute critical value based on simulation.
   test = c(1:100)
   for (i in 1:100){
-    xx = rnorm(length(data))
+    xx = stats::rnorm(length(data))
     test[i] = tm(xx,k)
   }
 
-  print(ggplot(mapping = aes(sample=data)) +
-          geom_qq())
+  print(ggplot2::ggplot(mapping = ggplot2::aes(sample=data)) +
+          ggplot2::geom_qq())
 
   lst <- list(ek = ekstat,
               h0 = "there are no outliers in the data",
@@ -44,7 +44,7 @@ tmTest <- function(data,k){
               ek = ekstat,
               method = "Tietjen Moore Test",
               alpha = 0.05,
-              low_tail =  quantile(test,0.05))
+              low_tail =  stats::quantile(test,0.05))
   class(lst) <- "tmtest"
   lst
 }
