@@ -29,6 +29,7 @@
 #' @import ggplot2
 #' @import tidyverse
 #' @import ggpubr
+#' @import stats
 #'
 #' @examples
 #' x <- LEW.DAT$Deflection
@@ -38,24 +39,24 @@
 
 fourPlot <- function(data, bins=11) {
   # Sequence plot made with geom_line
-  seq_plot <- ggplot(mapping = aes(x = 1:length(data), y = data)) +
-    labs(x = "RUN SEQUENCE PLOT Y", y = "") +
-    geom_line()
+  seq_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = 1:length(data), y = data)) +
+    ggplot2::labs(x = "RUN SEQUENCE PLOT Y", y = "") +
+    ggplot2::geom_line()
 
   # lag plot made with geom_point
-  lag_plot <- ggplot(mapping = aes(x=data, y=lag(data,1))) +
-    labs(x = "LAG PLOT Y", y="") +
-    geom_point(shape = 4, na.rm = TRUE)
+  lag_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x=data, y=stats::lag(data,1))) +
+    ggplot2::labs(x = "LAG PLOT Y", y="") +
+    ggplot2::geom_point(shape = 4, na.rm = TRUE)
 
   # Histogram made with geom_histogram
-  hist_plot <- ggplot(mapping = aes(x=data)) +
-    labs(x = "HISTOGRAM Y", y="") +
-    geom_histogram(bins=bins)
+  hist_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x=data)) +
+    ggplot2::labs(x = "HISTOGRAM Y", y="") +
+    ggplot2::geom_histogram(bins=bins)
 
   # Quantile plot made with geom_qq
-  quant_plot <- ggplot(mapping = aes(sample=data)) +
-    labs(x = "NORMAL PROBABILITY PLOT Y") +
-    geom_qq(geom = "line")
+  quant_plot <- ggplot2::ggplot(mapping = ggplot2::aes(sample=data)) +
+    ggplot2::labs(x = "NORMAL PROBABILITY PLOT Y") +
+    ggplot2::geom_qq(geom = "line")
 
   # Put all plots into a list
   fourplot_obj <- list(seq_plot = seq_plot,
@@ -72,10 +73,11 @@ fourPlot <- function(data, bins=11) {
 # Print function for class "4plot"
 #' @export
 print.4plot <- function(x, ...){
-  fig <- ggarrange(x$seq_plot,
+  fig <- ggpubr::ggarrange(x$seq_plot,
             x$lag_plot,
             x$hist_plot,
             x$quant_plot, ncol=2,nrow=2)
-  print(annotate_figure(fig, top = text_grob("4-PLOT",size=16)))
+  print(ggpubr::annotate_figure(fig, top = ggpubr::text_grob("4-PLOT",size=16)))
   invisible(x)
 }
+
