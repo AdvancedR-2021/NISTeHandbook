@@ -33,7 +33,7 @@ tukeyPPCC <- function(data) {
   xval <- c()
   yval <- c()
   for (i in seq(-2,2,0.02)) {
-    yval <- c(yval, cor(tukey_order(U_i(data),i), data))
+    yval <- c(yval, stats::cor(tukey_order(U_i(data),i), data))
     xval <- c(xval, i)
   }
 
@@ -55,14 +55,14 @@ tukeyPPCC <- function(data) {
   }
 
   cat(paste("Maximum value of the correlation coefficient", max_corcoeff, sep=" = "),
-      paste(paste("Lambda", strrep(" ",37)),lambda, sep=" = "), sep = "\n")
+      paste(paste("Lambda", base::strrep(" ",37)),lambda, sep=" = "), sep = "\n")
 
   cat("The distribution of your data might be", pred_dist, sep=" ")
 
-  ggplot(mapping = aes(x=xval, y=yval)) +
-    geom_point(na.rm = TRUE) +
-    labs(x="Tukey Distribution Tail Length (Lambda)", y="Probability Plot Correlation Coefficient", title="(Tukey) PPCC Plot") +
-    theme(plot.title = element_text(hjust = 0.5))
+  ggplot2::ggplot(mapping = ggplot2::aes(x=xval, y=yval)) +
+    ggplot2::geom_point(na.rm = TRUE) +
+    ggplot2::labs(x="Tukey Distribution Tail Length (Lambda)", y="Probability Plot Correlation Coefficient", title="(Tukey) PPCC Plot") +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5))
 }
 
 #' @title PPCC Plot
@@ -98,20 +98,20 @@ PPCC <- function(data, distribution) {
 
   for (i in seq(0.1,10,0.01)) {
     if (distribution == "weibull") {
-      yval <- c(yval, cor(qweibull(p=U_i(data),shape=i), data))
+      yval <- c(yval, stats::cor(stats::qweibull(p=U_i(data),shape=i), data))
     }
     if (distribution == "gamma") {
-      yval <- c(yval, cor(qgamma(p=U_i(data),shape=i), data))
+      yval <- c(yval, stats::cor(stats::qgamma(p=U_i(data),shape=i), data))
     }
     xval <- c(xval, i)
   }
   cat(paste("Maximum value of the correlation coefficient", round(max(yval, na.rm=TRUE), digits=3), sep=" = "),
-      paste(paste("Optimal value of the shape parameter", strrep(" ",7)), round(xval[which.max(yval)], digits=3), sep=" = "), sep="\n")
+      paste(paste("Optimal value of the shape parameter", base::strrep(" ",7)), round(xval[which.max(yval)], digits=3), sep=" = "), sep="\n")
 
-  ggplot(mapping = aes(x=xval, y=yval)) +
-    geom_point(na.rm = TRUE) +
-    labs(x="Possible shape values (Lambda)", y="Probability Plot Correlation Coefficient", title=paste(distribution, "PPCC Plot")) +
-    theme(plot.title = element_text(hjust = 0.5))
+  ggplot2::ggplot(mapping = ggplot2::aes(x=xval, y=yval)) +
+    ggplot2::geom_point(na.rm = TRUE) +
+    ggplot2::labs(x="Possible shape values (Lambda)", y="Probability Plot Correlation Coefficient", title=paste(distribution, "PPCC Plot")) +
+    ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5))
 }
 
 
