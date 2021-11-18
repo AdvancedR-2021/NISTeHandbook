@@ -1,11 +1,17 @@
-#' Tietjen-Moore Test for Outliers
+#' @title Tietjen-Moore Test for Outliers
 #'
-#' A function to test for k outliers in both tails.
+#' @description A function to test for k outliers in both tails.
 #'
-#' @param x A list of univariate data.
+#' @param data A list of univariate data.
 #' @param k The number of suspected outliers.
 #'
 #' @return An object that shows the result of the hypothesis.
+#'
+#' @details The Tietjen-Moore test is used to detect multiple outliers in a univariate data set
+#' that follows an approximately normal distribution. If testing for a single outlier, the Tietjen-Moore
+#' test is equivalent to the Grubbs' test.
+#'
+#' @usage TMTest(data, k)
 #'
 #' @import stats
 #' @import ggplot2
@@ -15,21 +21,21 @@
 #' 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
 #' Specify k, the number of outliers being tested.
 #' k = 3
-#' TMTest(x,k)
+#' TMTest(data=x,k=k)
 #'
 #' @export
 
-TMTest <- function(x,k){
+TMTest <- function(data,k){
   ## Call the function and compute value of test statistic for data.
-  ekstat = tm(x,k)
+  ekstat = tm(data,k)
   ## Compute critical value based on simulation.
   test = c(1:100)
   for (i in 1:100){
-    xx = rnorm(length(x))
+    xx = rnorm(length(data))
     test[i] = tm(xx,k)
   }
 
-  print(ggplot(mapping = aes(sample=x)) +
+  print(ggplot(mapping = aes(sample=data)) +
           geom_qq())
 
   lst <- list(ek = ekstat,
@@ -58,24 +64,24 @@ print.tmtest <- function(x, ...){
 
 # Helpers -----------------------------------------------------------------
 
-tm <- function(x,k){
+tm <- function(data,k){
 
-  n = length(x)
+  n = length(data)
 
   ## Compute the absolute residuals.
-  r = abs(x - mean(x))
+  r = abs(data - mean(data))
 
   ## Sort data according to size of residual.
-  df = data.frame(x,r)
+  df = data.frame(data,r)
   dfs = df[order(df$r),]
 
   ## Create a subset of the data without the largest k values.
   klarge = c((n-k+1):n)
-  subx = dfs$x[-klarge]
+  subx = dfs$data[-klarge]
 
   ## Compute the sums of squares.
   ksub = (subx - mean(subx))**2
-  all = (df$x - mean(df$x))**2
+  all = (df$data - mean(df$data))**2
 
   ## Compute the test statistic.
   ek = sum(ksub)/sum(all)

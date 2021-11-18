@@ -1,6 +1,6 @@
-#' Four Plot
+#' @title Four Plot
 #'
-#' The 4-plot is an EDA technique for testing underlying assumptions.
+#' @description The 4-plot is an EDA technique for testing underlying assumptions.
 #'
 #' @param data A list of data values.
 #' @param bins Number of bins to show in the histogram.
@@ -24,6 +24,8 @@
 #'
 #' See the vignette for more details about this.
 #'
+#' @usage fourPlot(data, bins=11)
+#'
 #' @import ggplot2
 #' @import tidyverse
 #' @import ggpubr
@@ -35,30 +37,39 @@
 #' @export
 
 fourPlot <- function(data, bins=11) {
+  # Sequence plot made with geom_line
   seq_plot <- ggplot(mapping = aes(x = 1:length(data), y = data)) +
     labs(x = "RUN SEQUENCE PLOT Y", y = "") +
     geom_line()
 
+  # lag plot made with geom_point
   lag_plot <- ggplot(mapping = aes(x=data, y=lag(data,1))) +
     labs(x = "LAG PLOT Y", y="") +
     geom_point(shape = 4, na.rm = TRUE)
 
+  # Histogram made with geom_histogram
   hist_plot <- ggplot(mapping = aes(x=data)) +
     labs(x = "HISTOGRAM Y", y="") +
     geom_histogram(bins=bins)
 
+  # Quantile plot made with geom_qq
   quant_plot <- ggplot(mapping = aes(sample=data)) +
     labs(x = "NORMAL PROBABILITY PLOT Y") +
     geom_qq(geom = "line")
 
+  # Put all plots into a list
   fourplot_obj <- list(seq_plot = seq_plot,
                       lag_plot = lag_plot,
                       hist_plot = hist_plot,
                       quant_plot = quant_plot)
+
+  # Assign class "4plot" to list
   class(fourplot_obj) <- "4plot"
+
   fourplot_obj
 }
 
+# Print function for class "4plot"
 #' @export
 print.4plot <- function(x, ...){
   fig <- ggarrange(x$seq_plot,

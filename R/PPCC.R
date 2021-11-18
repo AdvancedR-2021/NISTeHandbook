@@ -1,14 +1,18 @@
-#' Tukey-Lambda PPCC Plot
+#' @title Tukey-Lambda PPCC Plot
 #'
-#' This function is useful for symmetric distributions. It can indicate what type of distribution your data follows,
-#' for example if the data is long-tailed or short-tailed, based on the lambda value, and it can further indicate several common distributions.
-#' The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution and you should follow up with PPCC and
-#' probability plots of the appropriate alternatives.
+#' @description The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution for your data.
 #'
 #' @param data A list of data.
 #'
 #' @return The function returns a Tukey Lambda PPCC plot, the maximum value of the correlation coefficient
 #' together with the corresponding lambda value and an indication of what kind of distribution your data might fallow.
+#'
+#' @details This function is useful for symmetric distributions. It can indicate what type of distribution your data follows,
+#' for example if the data is long-tailed or short-tailed, based on the lambda value, and it can further indicate several common distributions.
+#' The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution and you should follow up with PPCC and
+#' probability plots of the appropriate alternatives.
+#'
+#' @usage PPCC_tukey(data)
 #'
 #' @import ggplot2
 #' @import stats
@@ -18,7 +22,7 @@
 #' PPCC_tukey(data)
 #'
 #' @export
-#'
+
 PPCC_tukey <- function(data) {
 
   tukey_order <- function(mi, lambda){
@@ -66,12 +70,19 @@ PPCC_tukey <- function(data) {
     #         y= 0.9, label = paste("Max. y-value = ", max_corcoeff, "\n", quote(lambda),"=", lambda))
 }
 
-#' PPCC Plot
+#' @title PPCC Plot
+#'
+#' @description The PPCC plot is a graphical technique for identifying the shape parameter
+#' for a distributional family that best describes the data set.
 #'
 #' @param data A list of data.
-#' @param distribution The distribution
+#' @param distribution The distribution of your data
 #'
 #' @return plot
+#'
+#' @details
+#'
+#' @usage
 #'
 #' @import ggplot2
 #' @import stats
@@ -105,31 +116,37 @@ PPCC <- function(data, distribution) {
 }
 
 
-
-
-
-
-
+#' @title Probability Plot
+#'
+#' @description
+#'
+#' @param data
+#' @param distribution
+#' @param shape
+#'
+#' @return
+#'
+#' @details
+#'
+#' @usage
+#'
+#' @examples
+#'
+#' @export
 ProbPlot <- function(data, distribution, shape) {
   data <- sort(data)
   if (distribution == "weibull") {
-    print(ggplot(mapping = aes(y=data, x=qweibull(p=U_i(data),shape=shape))) +
-            geom_line())
+    weib_plot <- ggplot(mapping = aes(y=data, x=qweibull(p=U_i(data),shape=shape))) +
+            geom_line()
+    weib_plot
   }
   if (distribution == "gamma") {
-    print(ggplot(mapping = aes(y=data, x=qgamma(p=U_i(data),shape=shape))) +
-            geom_line())
+    gamma_plot <- ggplot(mapping = aes(y=data, x=qgamma(p=U_i(data),shape=shape))) +
+            geom_line()
+    gamma_plot
   }
+
 }
-
-
-# The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution.
-# You should follow-up with PPCC and probability plots of the appropriate alternatives.
-# https://www.itl.nist.gov/div898/handbook/eda/section3/ppccplot.htm
-
-# To make the probability plot we use:
-# https://www.itl.nist.gov/div898/handbook/eda/section3/probplot.htm
-# For the Tukey Lambda dist: https://www.itl.nist.gov/div898/handbook/eda/section3/eda366f.htm
 
 # Helpers ----------------------------------
 
