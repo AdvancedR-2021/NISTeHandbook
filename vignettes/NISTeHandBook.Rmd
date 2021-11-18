@@ -123,7 +123,7 @@ After doing some EDA, we suspect there might be two outliers.
 
 
 ```{r, fig.width=10, fig.height=6}
-TMTest(x,2)
+tmTest(x,2)
 ```
 
 The TMTest function shows a normal QQ plot, to remind us that the test is only valid on approximately normal distributed data. We also see the two suspected outliers.
@@ -163,7 +163,7 @@ We observe that the distribution is symmetric, and the normal probability plot s
 Let us ask the Tukey:
 
 ```{r, fig.width=10, fig.height=6}
-PPCC_tukey(data)
+tukeyPPCC(data)
 ```
 
 We get a Tukey-Lambda PPCC plot, showing the correlation coefficient for different values of $\lambda$. The print shows that the highest correlation is 0.999 and that was at $\lambda = 0.14$. It also conveniently tell us that our data is indeed normal.
