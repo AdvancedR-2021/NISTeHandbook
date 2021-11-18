@@ -7,8 +7,7 @@ Authors@R:
     person("Tony", "Hin", , "201905921@post.au.dk", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: This package implements 4 methods from the NIST Handbook. 
-Depends:
-    tidyverse,
+Imports:
     ggplot2,
     ggpubr,
     R (>= 2.10)
