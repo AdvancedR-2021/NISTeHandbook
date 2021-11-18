@@ -10,7 +10,7 @@ Description: This package implements 4 methods from the NIST Handbook.
 Imports:
     ggplot2,
     ggpubr,
-    R (>= 2.10)
+    dplyr
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
