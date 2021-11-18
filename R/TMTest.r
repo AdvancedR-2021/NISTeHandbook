@@ -13,7 +13,7 @@
 #'
 #' @usage tmTest(data, k)
 #'
-#' @import stats
+#' @importFrom stats rnorm quantile
 #' @import ggplot2
 #'
 #' @examples

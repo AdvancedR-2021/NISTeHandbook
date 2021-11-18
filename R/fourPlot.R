@@ -27,9 +27,8 @@
 #' @usage fourPlot(data, bins=11)
 #'
 #' @import ggplot2
-#' @import tidyverse
 #' @import ggpubr
-#' @import stats
+#' @importFrom dplyr lag
 #'
 #' @examples
 #' x <- LEW.DAT$Deflection
@@ -44,7 +43,7 @@ fourPlot <- function(data, bins=11) {
     ggplot2::geom_line()
 
   # lag plot made with geom_point
-  lag_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x=data, y=stats::lag(data,1))) +
+  lag_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x=data, y=dplyr::lag(data,1))) +
     ggplot2::labs(x = "LAG PLOT Y", y="") +
     ggplot2::geom_point(shape = 4, na.rm = TRUE)
 

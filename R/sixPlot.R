@@ -12,8 +12,9 @@
 #' @usage sixPlot(X, Y, bins=30)
 #'
 #' @import ggplot2
-#' @import stats
+#' @importFrom stats lm predict residuals
 #' @import ggpubr
+#' @importFrom dplyr lag
 #'
 #' @examples
 #' X <- 1:100
@@ -44,7 +45,7 @@ sixPlot <- function(X, Y, bins=30) {
     ggplot2::labs(x = "PLOT RES PRED", y="")
 
   # Lag plot of residuals made with geom_point
-  lag_res_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = resid, y = stats::lag(resid))) +
+  lag_res_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = resid, y = dplyr::lag(resid,1))) +
     ggplot2::geom_point(na.rm = TRUE) +
     ggplot2::labs(x = "LAG PLOT RES", y="")
 

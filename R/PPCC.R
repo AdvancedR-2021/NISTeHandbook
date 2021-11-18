@@ -15,7 +15,7 @@
 #' @usage tukeyPPCC(data)
 #'
 #' @import ggplot2
-#' @import stats
+#' @importFrom stats cor
 #'
 #' @examples
 #' data <- rnorm(100)
@@ -80,10 +80,12 @@ tukeyPPCC <- function(data) {
 #' the probability plot (for example, use the function `ProbPlot`) should then be generated to find estimates of the location and scale parameters
 #' and in addition to provide a graphical assessment of the adequacy of the distributional fit.
 #'
+#' You can only use data from either a weibull or gamma distribution, so far.
+#'
 #' @usage PPCC(data, distribution)
 #'
 #' @import ggplot2
-#' @import stats
+#' @importFrom stats cor qweibull qgamma
 #'
 #' @examples
 #' data <- RANDWEIB.DAT$Y
