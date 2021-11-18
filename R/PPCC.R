@@ -12,18 +12,18 @@
 #' The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution and you should follow up with PPCC and
 #' probability plots of the appropriate alternatives.
 #'
-#' @usage PPCC_tukey(data)
+#' @usage tukeyPPCC(data)
 #'
 #' @import ggplot2
 #' @import stats
 #'
 #' @examples
-#' data <- NORMAL.DAT$Y
-#' PPCC_tukey(data)
+#' data <- rnorm(100)
+#' tukeyPPCC(data)
 #'
 #' @export
 
-PPCC_tukey <- function(data) {
+tukeyPPCC <- function(data) {
 
   tukey_order <- function(mi, lambda){
     (mi**lambda - (1-mi)**lambda) / (lambda)

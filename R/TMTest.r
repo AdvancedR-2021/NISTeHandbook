@@ -11,7 +11,7 @@
 #' that follows an approximately normal distribution. If testing for a single outlier, the Tietjen-Moore
 #' test is equivalent to the Grubbs' test.
 #'
-#' @usage TMTest(data, k)
+#' @usage tmTest(data, k)
 #'
 #' @import stats
 #' @import ggplot2
@@ -21,11 +21,11 @@
 #' 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
 #' Specify k, the number of outliers being tested.
 #' k = 3
-#' TMTest(data=x,k=k)
+#' tmTest(data=x,k=k)
 #'
 #' @export
 
-TMTest <- function(data,k){
+tmTest <- function(data,k){
   ## Call the function and compute value of test statistic for data.
   ekstat = tm(data,k)
   ## Compute critical value based on simulation.
