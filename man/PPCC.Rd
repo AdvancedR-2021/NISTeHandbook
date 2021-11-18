@@ -4,18 +4,22 @@
 \alias{PPCC}
 \title{PPCC Plot}
 \usage{
-PPCC(data, distribution)
+
 }
 \arguments{
 \item{data}{A list of data.}
 
-\item{distribution}{The distribution}
+\item{distribution}{The distribution of your data}
 }
 \value{
 plot
 }
 \description{
-PPCC Plot
+The PPCC plot is a graphical technique for identifying the shape parameter
+for a distributional family that best describes the data set.
+}
+\details{
+
 }
 \examples{
 example here
