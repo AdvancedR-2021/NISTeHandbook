@@ -167,3 +167,43 @@ tukeyPPCC(data)
 ```
 
 We get a Tukey-Lambda PPCC plot, showing the correlation coefficient for different values of $\lambda$. The print shows that the highest correlation is 0.999 and that was at $\lambda = 0.14$. It also conveniently tell us that our data is indeed normal.
+
+
+# PPCC Weibull or Gamma
+
+After completing a Tukey-lambda PPCC plot, we can follow up with another PPCC plot to check the best-fit. 
+
+Let me show you an example. Let's load some  weibull data, and forget that it is weibull.
+
+```{r}
+weib_data = RANDWEIB.DAT
+head(weib_data)
+```
+
+Let us do some EDA, with the 4plot. 
+
+```{r, fig.width=10, fig.height=6}
+fourPlot(weib_data$Y)
+```
+
+We see that it is fairly symmetrical from the histogram, and that it might be approximate normal distributed. Let us try and confirm with the tukeyPPCC.
+
+```{r, fig.width=10, fig.height=6}
+tukeyPPCC(weib_data$Y)
+```
+
+Interesting. The output tells us that data might come from a uniform or beta or something short-tailed. 
+
+With the PPCC function you can fit the data to either a gamma or weibull distribution. 
+
+
+```{r, fig.width=10, fig.height=6}
+PPCC(weib_data$Y, 'gamma')
+```
+The data could fits a gamma with shape parameter 10, best. Or..
+
+```{r, fig.width=10, fig.height=6}
+PPCC(weib_data$Y, 'weibull')
+```
+It has a correlation coefficient of .999 with a weibull with shape parameter 2.23. The [data](https://www.itl.nist.gov/div898/handbook/datasets/RANDWEIB.DAT) is in fact generated from a weibull with shape parameter 2.
+
