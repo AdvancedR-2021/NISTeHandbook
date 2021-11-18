@@ -41,6 +41,7 @@ Let us start with the 4 plot, using the example from the eNist website. We use t
 We first load the RPackage:
 ```{r}
 library(NISTeHandbook)
+library(ggplot2)
 ```
 
 The package provides the data set directly.
