@@ -15,7 +15,7 @@ PPCC(data, distribution)
 A Probability Plot Correlation Coefficient Plot.
 }
 \description{
-The PPCC plot is a graphical technique for identifying the shape parameter
+The \href{https://www.itl.nist.gov/div898/handbook/eda/section3/ppccplot.htm}{PPCC plot} is a graphical technique for identifying the shape parameter
 for a distributional family that best describes the data set.
 }
 \details{

@@ -15,7 +15,8 @@ fourPlot(data, bins=11)
 A frame with 4 plots.
 }
 \description{
-The 4-plot is an EDA technique for testing underlying assumptions.
+The \href{https://www.itl.nist.gov/div898/handbook/eda/section3/4plot.htm}{4-plot} is an EDA technique for testing underlying assumptions. It returns a list of 4 plots;
+\href{https://www.itl.nist.gov/div898/handbook/eda/section3/runseqpl.htm}{sequence plot}, \href{https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm}{lag plot}, \href{https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm}{histogram} and \href{https://www.itl.nist.gov/div898/handbook/eda/section3/normprpl.htm}{normal probability plot}.
 }
 \details{
 The 4-plot outputs a frame with four plots.

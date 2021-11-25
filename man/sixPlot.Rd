@@ -17,8 +17,16 @@ sixPlot(X, Y, bins=30)
 A frame with 6 plots.
 }
 \description{
-The 6-plot is a collection of 6 specific graphical techniques
-whose purpose is to assess the validity of a Y versus X fit.
+The \href{https://www.itl.nist.gov/div898/handbook/eda/section3/6plot.htm}{6-plot} is a collection of 6 specific graphical techniques
+whose purpose is to assess the validity of a Y versus X fit. It returns a list of 6 plots;
+\itemize{
+\item \href{https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm}{Scatter plot (predicted vs independent variable)}
+\item \href{https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm}{Scatter plot (residuals vs independent variable)}
+\item \href{https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm}{Scatter plot (residuals vs predicted values)}
+\item \href{https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm}{Lag plot of residuals}
+\item \href{https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm}{Histogram of residuals}
+\item \href{https://www.itl.nist.gov/div898/handbook/eda/section3/normprpl.htm}{Normal probability plot of the residuals}
+}
 }
 \examples{
 X <- 1:100

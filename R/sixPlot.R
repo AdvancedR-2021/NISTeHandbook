@@ -1,7 +1,14 @@
 #' @title Six Plot
 #'
-#' @description The 6-plot is a collection of 6 specific graphical techniques
-#' whose purpose is to assess the validity of a Y versus X fit.
+#' @description The [6-plot](https://www.itl.nist.gov/div898/handbook/eda/section3/6plot.htm) is a collection of 6 specific graphical techniques
+#' whose purpose is to assess the validity of a Y versus X fit. It returns a list of 6 plots;
+#'
+#' - [Scatter plot (predicted vs independent variable)](https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm)
+#' - [Scatter plot (residuals vs independent variable)](https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm)
+#' - [Scatter plot (residuals vs predicted values)](https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm)
+#' - [Lag plot of residuals](https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm)
+#' - [Histogram of residuals](https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm)
+#' - [Normal probability plot of the residuals](https://www.itl.nist.gov/div898/handbook/eda/section3/normprpl.htm)
 #'
 #' @param X A list of X values.
 #' @param Y A list of Y values.

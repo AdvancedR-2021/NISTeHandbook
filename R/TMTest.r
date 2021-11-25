@@ -1,6 +1,6 @@
 #' @title Tietjen-Moore Test for Outliers
 #'
-#' @description A function to test for k outliers in both tails.
+#' @description [Tietjen-Moore test](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h2.htm) is a function to test for k outliers in both tails.
 #'
 #' @param data A list of univariate data.
 #' @param k The number of suspected outliers.

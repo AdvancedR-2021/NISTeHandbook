@@ -15,7 +15,7 @@ tmTest(data, k)
 An object that shows the result of the hypothesis.
 }
 \description{
-A function to test for k outliers in both tails.
+\href{https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h2.htm}{Tietjen-Moore test} is a function to test for k outliers in both tails.
 }
 \details{
 The Tietjen-Moore test is used to detect multiple outliers in a univariate data set

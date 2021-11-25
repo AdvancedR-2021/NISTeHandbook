@@ -14,7 +14,7 @@ The function returns a Tukey Lambda PPCC plot, the maximum value of the correlat
 together with the corresponding lambda value and an indication of what kind of distribution your data might fallow.
 }
 \description{
-The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution for your data.
+The \href{https://www.itl.nist.gov/div898/handbook/eda/section3/ppccplot.htm}{Tukey-Lambda PPCC plot} is used to suggest an appropriate distribution for your data.
 }
 \details{
 This function is useful for symmetric distributions. It can indicate what type of distribution your data follows,

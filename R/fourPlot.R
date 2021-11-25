@@ -1,6 +1,7 @@
 #' @title Four Plot
 #'
-#' @description The 4-plot is an EDA technique for testing underlying assumptions.
+#' @description The [4-plot](https://www.itl.nist.gov/div898/handbook/eda/section3/4plot.htm) is an EDA technique for testing underlying assumptions. It returns a list of 4 plots;
+#' [sequence plot](https://www.itl.nist.gov/div898/handbook/eda/section3/runseqpl.htm), [lag plot](https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm), [histogram](https://www.itl.nist.gov/div898/handbook/eda/section3/histogra.htm) and [normal probability plot](https://www.itl.nist.gov/div898/handbook/eda/section3/normprpl.htm).
 #'
 #' @param data A list of data values.
 #' @param bins Number of bins to show in the histogram.

@@ -1,6 +1,6 @@
 #' @title Tukey-Lambda PPCC Plot
 #'
-#' @description The Tukey-Lambda PPCC plot is used to suggest an appropriate distribution for your data.
+#' @description The [Tukey-Lambda PPCC plot](https://www.itl.nist.gov/div898/handbook/eda/section3/ppccplot.htm) is used to suggest an appropriate distribution for your data.
 #'
 #' @param data A list of data.
 #'
@@ -67,7 +67,7 @@ tukeyPPCC <- function(data) {
 
 #' @title PPCC Plot
 #'
-#' @description The PPCC plot is a graphical technique for identifying the shape parameter
+#' @description The [PPCC plot](https://www.itl.nist.gov/div898/handbook/eda/section3/ppccplot.htm) is a graphical technique for identifying the shape parameter
 #' for a distributional family that best describes the data set.
 #'
 #' @param data A list of data.
