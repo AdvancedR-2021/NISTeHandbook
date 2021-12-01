@@ -15,6 +15,8 @@
 #' A normal probability plot that tests together with the histogram, if the data follows a normal distribution.
 #' All plots are made with `ggplot2` and can be elaborated further if needed.
 #'
+#' The output is a 4plot object, a list containing 4 ggplots. In order seq_plot, lag_plot, hist_plot, quant_plot
+#'
 #' `seq_plot` uses geom_line()
 #'
 #' `lag_plot` uses geom_point()
