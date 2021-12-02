@@ -1,9 +1,15 @@
 url: ~
 navbar:
   structure:
-    left: [search]
-    right: [reference, descriptions]
-template:
-  bootstrap: 5
-  bootswatch: minty
-
+    right: [search]
+    left: [reference, articles]
+  components:
+    articles:
+      text: NISTeHandbook
+      href: articles/NISTeHandbook.html
+    reference:
+      text: Functions
+      href: reference/index.html
+#template:
+#  bootstrap: 5
+#  bootswatch:
