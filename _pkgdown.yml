@@ -1,4 +1,8 @@
 url: ~
+navbar:
+  structure:
+    left: [search]
+    right: [reference, descriptions]
 template:
   bootstrap: 5
   bootswatch: minty

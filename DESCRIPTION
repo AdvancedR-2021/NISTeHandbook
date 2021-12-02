@@ -2,10 +2,11 @@ Package: NISTeHandbook
 Title: Implements Statistical Methods from the NIST Handbook
 Version: 0.0.1
 Authors@R: 
-    person("Laura", "Folmer", , "201905054@post.au.dk", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    c(person("Laura", "Folmer", , "201905054@post.au.dk", role = c("aut"),
+           comment = c(ORCID = "YOUR-ORCID-ID")),
     person("Tony", "Hin", , "201905921@post.au.dk", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
+           )
 Description: This package implements 4 methods from the NIST Handbook. 
 Imports:
     ggplot2,
