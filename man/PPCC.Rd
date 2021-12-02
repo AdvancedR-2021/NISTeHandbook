@@ -4,12 +4,12 @@
 \alias{PPCC}
 \title{PPCC Plot}
 \usage{
-PPCC(data, distribution)
+PPCC(data, distribution = c("weibull", "gamma"))
 }
 \arguments{
 \item{data}{A list of data.}
 
-\item{distribution}{The distribution that best describes your data.}
+\item{distribution}{The distribution that best describes your data written as a string. Right now, you can either write "weibull" or "gamma".}
 }
 \value{
 A Probability Plot Correlation Coefficient Plot.
