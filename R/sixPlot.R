@@ -16,6 +16,16 @@
 #'
 #' @return A frame with 6 plots.
 #'
+#' @details The 6-plot outputs a 6plot object with six plots. A method is provided to print them in a frame.
+#' The plots are named scat_plot, res_x_plot, res_pred_plot,lag_res_plot, hist_res_plot and qq_plot.
+#' The model is a linear fit.
+#' `scat_plot` uses geom_point()
+#' `res_x_plot` uses geom_point()
+#' `res_pred_plot` uses geom_point()
+#' `lag_res_plot` uses geom_point()
+#' `hist_res_plot` uses geom_histogram()
+#' `qq_plot` uses geom_qq()
+#'
 #' @usage sixPlot(X, Y, bins=30)
 #'
 #' @import ggplot2
