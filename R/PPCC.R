@@ -71,7 +71,7 @@ tukeyPPCC <- function(data) {
 #' for a distributional family that best describes the data set.
 #'
 #' @param data A list of data.
-#' @param distribution The distribution that best describes your data.
+#' @param distribution The distribution that best describes your data written as a string. Right now, you can either write "weibull" or "gamma".
 #'
 #' @return A Probability Plot Correlation Coefficient Plot.
 #'
@@ -82,7 +82,7 @@ tukeyPPCC <- function(data) {
 #'
 #' You can only use data from either a weibull or gamma distribution, so far.
 #'
-#' @usage PPCC(data, distribution)
+#' @usage PPCC(data, distribution = c("weibull", "gamma"))
 #'
 #' @import ggplot2
 #' @importFrom stats cor qweibull qgamma
