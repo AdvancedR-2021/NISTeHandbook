@@ -19,12 +19,18 @@
 #' @details The 6-plot outputs a 6plot object with six plots. A method is provided to print them in a frame.
 #' The plots are named scat_plot, res_x_plot, res_pred_plot,lag_res_plot, hist_res_plot and qq_plot.
 #' The model is a linear fit.
-#' `scat_plot` uses geom_point()
-#' `res_x_plot` uses geom_point()
-#' `res_pred_plot` uses geom_point()
-#' `lag_res_plot` uses geom_point()
-#' `hist_res_plot` uses geom_histogram()
-#' `qq_plot` uses geom_qq()
+#'
+#' - `scat_plot` uses geom_point()
+#'
+#' - `res_x_plot` uses geom_point()
+#'
+#' - `res_pred_plot` uses geom_point()
+#'
+#' - `lag_res_plot` uses geom_point()
+#'
+#' - `hist_res_plot` uses geom_histogram()
+#'
+#' - `qq_plot` uses geom_qq()
 #'
 #' @usage sixPlot(X, Y, bins=30)
 #'
@@ -41,6 +47,10 @@
 #' @export
 
 sixPlot <- function(X, Y, bins=30) {
+  assertthat::assert_that(is.numeric(X))
+  assertthat::assert_that(is.numeric(Y))
+  assertthat::assert_that(length(X) == length(Y), msg = "Lengths of X and Y vector are not equal")
+
   # Fit the best linear model on the data and save predicted values and residuals
   linfit <- stats::lm(Y ~ X)
   pred_Y <- stats::predict(linfit)

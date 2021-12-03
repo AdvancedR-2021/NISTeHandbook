@@ -17,13 +17,13 @@
 #'
 #' The output is a 4plot object, a list containing 4 ggplots. In order seq_plot, lag_plot, hist_plot, quant_plot
 #'
-#' `seq_plot` uses geom_line()
+#' - `seq_plot` uses geom_line()
 #'
-#' `lag_plot` uses geom_point()
+#' - `lag_plot` uses geom_point()
 #'
-#' `hist_plot` uses geom_histogram()
+#' - `hist_plot` uses geom_histogram()
 #'
-#' `quant_plot` uses geom_qq()
+#' - `quant_plot` uses geom_qq()
 #'
 #' See the vignette for more details about this.
 #'
@@ -40,6 +40,7 @@
 #' @export
 
 fourPlot <- function(data, bins=11) {
+  assertthat::assert_that(is.numeric(data))
   # Sequence plot made with geom_line
   seq_plot <- ggplot2::ggplot(mapping = ggplot2::aes(x = 1:length(data), y = data)) +
     ggplot2::labs(x = "RUN SEQUENCE PLOT Y", y = "") +

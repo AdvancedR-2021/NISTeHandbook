@@ -20,13 +20,11 @@ An object that shows the result of the hypothesis.
 \details{
 The Tietjen-Moore test is used to detect multiple outliers in a univariate data set
 that follows an approximately normal distribution. If testing for a single outlier, the Tietjen-Moore
-test is equivalent to the Grubbs' test.
+test is equivalent to the Grubbs' test. TESTESTESTEST
 }
 \examples{
-x = c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05,
-0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
-Specify k, the number of outliers being tested.
-k = 3
+x <- c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05, 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
+k <- 3
 tmTest(data=x,k=k)
 
 }

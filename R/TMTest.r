@@ -9,7 +9,7 @@
 #'
 #' @details The Tietjen-Moore test is used to detect multiple outliers in a univariate data set
 #' that follows an approximately normal distribution. If testing for a single outlier, the Tietjen-Moore
-#' test is equivalent to the Grubbs' test.
+#' test is equivalent to the Grubbs' test. TESTESTESTEST
 #'
 #' @usage tmTest(data, k)
 #'
@@ -17,15 +17,18 @@
 #' @import ggplot2
 #'
 #' @examples
-#' x = c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05,
-#' 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
-#' Specify k, the number of outliers being tested.
-#' k = 3
+#' x <- c(-1.40, -0.44, -0.30, -0.24, -0.22, -0.13, -0.05, 0.06, 0.10, 0.18, 0.20, 0.39, 0.48, 0.63, 1.01)
+#' k <- 3
 #' tmTest(data=x,k=k)
 #'
 #' @export
 
 tmTest <- function(data,k){
+  assertthat::assert_that(is.numeric(data))
+  assertthat::assert_that(is.numeric(k))
+  assertthat::assert_that(k > 0)
+  assertthat::assert_that(length(data)>= k)
+
   ## Call the function and compute value of test statistic for data.
   ekstat = tm(data,k)
   ## Compute critical value based on simulation.
@@ -65,6 +68,10 @@ print.tmtest <- function(x, ...){
 # Helpers -----------------------------------------------------------------
 
 tm <- function(data,k){
+  assertthat::assert_that(is.numeric(data))
+  assertthat::assert_that(is.numeric(k))
+  assertthat::assert_that(k > 0)
+  assertthat::assert_that(length(data)>= k)
 
   n = length(data)
 

@@ -24,6 +24,7 @@
 #' @export
 
 tukeyPPCC <- function(data) {
+  assertthat::assert_that(is.numeric(data))
 
   tukey_order <- function(mi, lambda){
     (mi**lambda - (1-mi)**lambda) / (lambda)
@@ -94,6 +95,10 @@ tukeyPPCC <- function(data) {
 #' @export
 
 PPCC <- function(data, distribution) {
+  valid_dists <- c("weibull", "gamma")
+  assertthat::assert_that(is.numeric(data))
+  assertthat::assert_that(distribution %in% valid_dists, msg = "The given distribution is not a valid distribution for this function")
+
   data <- sort(data)
   xval <- c()
   yval <- c()

@@ -27,14 +27,12 @@ A normal probability plot that tests together with the histogram, if the data fo
 All plots are made with \code{ggplot2} and can be elaborated further if needed.
 
 The output is a 4plot object, a list containing 4 ggplots. In order seq_plot, lag_plot, hist_plot, quant_plot
-
-\code{seq_plot} uses geom_line()
-
-\code{lag_plot} uses geom_point()
-
-\code{hist_plot} uses geom_histogram()
-
-\code{quant_plot} uses geom_qq()
+\itemize{
+\item \code{seq_plot} uses geom_line()
+\item \code{lag_plot} uses geom_point()
+\item \code{hist_plot} uses geom_histogram()
+\item \code{quant_plot} uses geom_qq()
+}
 
 See the vignette for more details about this.
 }

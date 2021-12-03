@@ -32,12 +32,14 @@ whose purpose is to assess the validity of a Y versus X fit. It returns a list o
 The 6-plot outputs a 6plot object with six plots. A method is provided to print them in a frame.
 The plots are named scat_plot, res_x_plot, res_pred_plot,lag_res_plot, hist_res_plot and qq_plot.
 The model is a linear fit.
-\code{scat_plot} uses geom_point()
-\code{res_x_plot} uses geom_point()
-\code{res_pred_plot} uses geom_point()
-\code{lag_res_plot} uses geom_point()
-\code{hist_res_plot} uses geom_histogram()
-\code{qq_plot} uses geom_qq()
+\itemize{
+\item \code{scat_plot} uses geom_point()
+\item \code{res_x_plot} uses geom_point()
+\item \code{res_pred_plot} uses geom_point()
+\item \code{lag_res_plot} uses geom_point()
+\item \code{hist_res_plot} uses geom_histogram()
+\item \code{qq_plot} uses geom_qq()
+}
 }
 \examples{
 X <- 1:100
