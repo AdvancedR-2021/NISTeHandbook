@@ -80,14 +80,13 @@ whose purpose is to assess the validity of a Y versus X fit. It returns a list o
     <h2>Details</h2>
     <p>The 6-plot outputs a 6plot object with six plots. A method is provided to print them in a frame.
 The plots are named scat_plot, res_x_plot, res_pred_plot,lag_res_plot, hist_res_plot and qq_plot.
-The model is a linear fit.
-<code>scat_plot</code> uses geom_point()
-<code>res_x_plot</code> uses geom_point()
-<code>res_pred_plot</code> uses geom_point()
-<code>lag_res_plot</code> uses geom_point()
-<code>hist_res_plot</code> uses geom_histogram()
-<code>qq_plot</code> uses geom_qq()</p>
-    </div>
+The model is a linear fit.</p><ul><li><p><code>scat_plot</code> uses geom_point()</p></li>
+<li><p><code>res_x_plot</code> uses geom_point()</p></li>
+<li><p><code>res_pred_plot</code> uses geom_point()</p></li>
+<li><p><code>lag_res_plot</code> uses geom_point()</p></li>
+<li><p><code>hist_res_plot</code> uses geom_histogram()</p></li>
+<li><p><code>qq_plot</code> uses geom_qq()</p></li>
+</ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
@@ -95,7 +94,7 @@ The model is a linear fit.
 <span class="r-in"><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="va">x</span> <span class="op">*</span> <span class="fl">10</span>, <span class="fl">50</span><span class="op">)</span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in rnorm(100, x * 10, 50):</span> object 'x' not found</span>
 <span class="r-in"><span class="fu">sixPlot</span><span class="op">(</span><span class="va">X</span>, <span class="va">Y</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(predvars, data, env):</span> object 'Y' not found</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(assertion, env):</span> object 'Y' not found</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
