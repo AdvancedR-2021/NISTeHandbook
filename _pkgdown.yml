@@ -2,14 +2,40 @@ url: ~
 navbar:
   structure:
     right: [search]
-    left: [reference, articles]
+    left: [home, reference, articles]
   components:
+    home:
+      text: home
+      href: index.html
     articles:
       text: NISTeHandbook
       href: articles/NISTeHandbook.html
     reference:
-      text: Functions
-      href: reference/index.html
-#template:
-#  bootstrap: 5
-#  bootswatch:
+      text: Content
+      #href: reference/index.html
+      menu:
+        - text: "Test data"
+        - text: LEW.DAT
+          href: reference/LEW.DAT.html
+        - text: RANDWEIB.DAT
+          href: reference/RANDWEIB.DAT.html
+        - text: "---------"
+        - text: "Functions"
+        - text: fourPlot()
+          href: reference/fourPlot.html
+        - text: sixPlot()
+          href: reference/sixPlot.html
+        - text: tmTest()
+          href: reference/tmTest.html
+        - text: PPCC()
+          href: reference/PPCC.html
+        - text: tukeyPPCC()
+          href: reference/tukeyPPCC.html
+output:
+  html_document:
+    toc: true
+    toc_float: true
+
+template:
+  bootstrap: 5
+  bootswatch: sandstone
