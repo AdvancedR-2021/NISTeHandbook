@@ -41,7 +41,7 @@
 #'
 #' @examples
 #' X <- 1:100
-#' Y <- rnorm(100, x * 10, 50)
+#' Y <- rnorm(100, X * 10, 50)
 #' sixPlot(X, Y)
 #'
 #' @export
