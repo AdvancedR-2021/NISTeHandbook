@@ -9,7 +9,7 @@
 #'
 #' @details The Tietjen-Moore test is used to detect multiple outliers in a univariate data set
 #' that follows an approximately normal distribution. If testing for a single outlier, the Tietjen-Moore
-#' test is equivalent to the Grubbs' test. TESTESTESTEST
+#' test is equivalent to the Grubbs' test.
 #'
 #' @usage tmTest(data, k)
 #'
