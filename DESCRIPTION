@@ -2,14 +2,14 @@ Package: NISTeHandbook
 Title: Implements Statistical Methods from the NIST Handbook
 Version: 0.0.1
 Authors@R: c(
-    person("Tony", "Hin", , "201905921@post.au.dk", role = c("aut", "cre"),
+    person("Tony", "Hin", , "201905921@post.au.dk", role = "aut",
       comment = c(ORCID = "YOUR-ORCID-ID")
     ),
-    person("Laura", "Folmer", , "201905054@post.au.dk", role = "aut",
+    person("Laura", "Folmer", , "201905054@post.au.dk", role = c("aut", "cre"),
       comment = c(ORCID = "YOUR-ORCID-ID")
     )
   )
-Description: This package implements 4 methods from the NIST Handbook. 
+Description: This package implements 4 methods from the NIST Handbook; Four Plot, Six Plot, Probability Plot Correlation Coefficient Plot and Tietjen-Moore Test for Outliers.
 Imports:
     ggplot2,
     ggpubr,
