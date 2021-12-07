@@ -14,7 +14,7 @@ A data frame with 200 rows and 1 variable:
 data(LEW.DAT)
 }
 \description{
-A test data set used for testing the \code{fourPlot}-function. For more information
-see https://www.itl.nist.gov/div898/strd/univ/addinfo/lew.html.
+A test data set used for testing the \code{fourPlot}-function. For more information see
+\href{https://www.itl.nist.gov/div898/strd/univ/addinfo/lew.html}{here}.
 }
 \keyword{datasets}
