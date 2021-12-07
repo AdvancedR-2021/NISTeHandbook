@@ -27,7 +27,7 @@ and in addition to provide a graphical assessment of the adequacy of the distrib
 You can only use data from either a weibull or gamma distribution, so far.
 }
 \examples{
-data <- RANDWEIB.DAT$Y
+data <- RANDWEIB.DAT$data
 PPCC(data, "weibull")
 
 }
