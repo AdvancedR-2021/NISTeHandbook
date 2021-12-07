@@ -89,7 +89,7 @@ tukeyPPCC <- function(data) {
 #' @importFrom stats cor qweibull qgamma
 #'
 #' @examples
-#' data <- RANDWEIB.DAT$Y
+#' data <- RANDWEIB.DAT$data
 #' PPCC(data, "weibull")
 #'
 #' @export
