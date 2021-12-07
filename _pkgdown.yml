@@ -9,7 +9,7 @@ navbar:
       href: index.html
     articles:
       text: NISTeHandbook
-      href: articles/NISTeHandbook.html
+      href: articles/NISTeHandBook.html
     reference:
       text: Content
       #href: reference/index.html
