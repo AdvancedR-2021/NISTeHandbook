@@ -189,13 +189,13 @@ head(weib_data)
 Let us do some EDA, with the 4plot. 
 
 ```{r, fig.width=6, fig.width=4}
-fourPlot(weib_data$Y)
+fourPlot(weib_data$data)
 ```
 
 We see that it is fairly symmetrical from the histogram, and that it might be approximate normal distributed. Let us try and confirm with the tukeyPPCC.
 
 ```{r, fig.width=6, fig.width=4}
-tukeyPPCC(weib_data$Y)
+tukeyPPCC(weib_data$data)
 ```
 
 Interesting. The output tells us that data might come from a uniform or beta or something short-tailed. 
@@ -204,13 +204,13 @@ With the PPCC function you can fit the data to either a gamma or weibull distrib
 
 
 ```{r, fig.width=6, fig.width=4}
-PPCC(weib_data$Y, 'gamma')
+PPCC(weib_data$data, 'gamma')
 ```
 
 The data could fits a gamma with shape parameter 10, best. Or..
 
 ```{r, fig.width=6, fig.width=4}
-PPCC(weib_data$Y, 'weibull')
+PPCC(weib_data$data, 'weibull')
 ```
 
 It has a correlation coefficient of .999 with a weibull with shape parameter 2.23. The [data](https://www.itl.nist.gov/div898/handbook/datasets/RANDWEIB.DAT) is in fact generated from a weibull with shape parameter 2.
