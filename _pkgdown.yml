@@ -34,8 +34,10 @@ navbar:
 output:
   html_document:
     toc: true
-    toc_float: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
 
 template:
-  bootstrap: 5
-  bootswatch: sandstone
+  package: preferably
+#  bootstrap: 5
