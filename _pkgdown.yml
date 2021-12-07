@@ -9,7 +9,7 @@ navbar:
       href: index.html
     articles:
       text: NISTeHandbook
-      href: articles/NISTeHandbook.html
+      href: /NISTeHandbook.html
     reference:
       text: Content
       #href: reference/index.html
@@ -27,10 +27,11 @@ navbar:
           href: reference/sixPlot.html
         - text: tmTest()
           href: reference/tmTest.html
-        - text: PPCC()
-          href: reference/PPCC.html
         - text: tukeyPPCC()
           href: reference/tukeyPPCC.html
+        - text: PPCC()
+          href: reference/PPCC.html
+
 output:
   html_document:
     toc: true
@@ -40,3 +41,4 @@ output:
 
 template:
   package: preferably
+  bootstrap: 5
