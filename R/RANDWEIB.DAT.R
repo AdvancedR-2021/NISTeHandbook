@@ -9,7 +9,7 @@
 #'
 #' @format A data frame with 500 rows and 1 variable:
 #' \describe{
-#'   \item{Y}{}
+#'   \item{data}{}
 #' }
 #'
 #' @keywords datasets
