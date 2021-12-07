@@ -1,7 +1,7 @@
 #' LEW data
 #'
-#' A test data set used for testing the `fourPlot`-function. For more information
-#' see https://www.itl.nist.gov/div898/strd/univ/addinfo/lew.html.
+#' A test data set used for testing the `fourPlot`-function. For more information see
+#' [here](https://www.itl.nist.gov/div898/strd/univ/addinfo/lew.html).
 #'
 #' @docType data
 #'
