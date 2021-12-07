@@ -40,7 +40,7 @@ As of the current version only 4 methods have been implemented:
 4-plot and 6-plot are very similar EDA methods for testing assumptions on a given data.
 
 
-Let us start with the 4 plot, using the example from the eNist website. We use the [LEW](https://www.itl.nist.gov/div898/handbook/datasets/LEW.DAT) dataset, which [describes](https://www.itl.nist.gov/div898/strd/univ/addinfo/lew.html) a study of the physical behaviour of steel-concrete beams under periodic load. The response variable is deflection from a center point, and 200 observations were collected.
+Let us start with the 4 -plot, using the example from the eNist website. We use the [LEW](https://www.itl.nist.gov/div898/handbook/datasets/LEW.DAT) dataset, which [describes](https://www.itl.nist.gov/div898/strd/univ/addinfo/lew.html) a study of the physical behaviour of steel-concrete beams under periodic load. The response variable is deflection from a center point, and 200 observations were collected.
 
 We first load the RPackage:
 ```{r}
@@ -62,7 +62,7 @@ fourplots
 ```
 
 
-The function outputs a 4plot object that contains every plot as a ggplot object, such that you can modify each individual plot. Printing the 4plot object gives the plot shown above. The number of bins is set to a default of 11, but we can specify other bin sizes in the 4plot function.
+The function outputs a 4-plot object that contains every plot as a ggplot object, such that you can modify each individual plot. Printing the 4-plot object gives the plot shown above. The number of bins is set to a default of 11, but we can specify other bin sizes in the 4-plot function.
 
 ```{r}
 fourplots <- fourPlot(LEW.DAT$Deflection, bins = 20)
@@ -70,7 +70,7 @@ fourplots <- fourPlot(LEW.DAT$Deflection, bins = 20)
 
 ## Using individual plots:
 
-To use only a specific or modify plots we can access them in the 4plot object. Let us take the sequence plot.
+To use only a specific or modify plots we can access them in the 4-plot object. Let us take the sequence plot.
 
 ```{r, fig.width=6, fig.width=4}
 fourplots$seq_plot
@@ -84,7 +84,7 @@ fourplots$seq_plot + geom_line(color="red")
 
 For finding out the specific geoms of fourplot, see the documentation in ?fourplots.
 
-We can then modify and save these to change our 4plot.
+We can then modify and save these to change our 4-plot.
 
 ```{r, fig.width=6, fig.width=4}
 fourplots$seq_plot <- fourplots$seq_plot + geom_line(color="red")
@@ -102,14 +102,14 @@ PONTIUS <- read.table("https://www.itl.nist.gov/div898/handbook/datasets/PONTIUS
 head(PONTIUS)
 ```
 
-We are looking at a response variable, beam deflections, V1 at various different loads V2. To create the six plot we input the response and the explanatory variable.
+We are looking at a response variable, beam deflections (V1) at various different loads (V2). To create the 6-plot we input the response and the explanatory variable.
 
 ```{r, fig.width=6, fig.height=4}
 sixPlot(PONTIUS$V2, PONTIUS$V1)
 ```
 
 
-sixPlot returns a sixPlot object that contains the 6 ggplots, that can be manipulated in a similar manner to the 4plot. 
+sixPlot returns a sixPlot object that contains the 6 ggplots, that can be manipulated in a similar manner to the 4-plot. 
 
 
 
@@ -179,7 +179,7 @@ We get a Tukey-Lambda PPCC plot, showing the correlation coefficient for differe
 
 After completing a Tukey-lambda PPCC plot, we can follow up with another PPCC plot to check the best-fit. 
 
-Let me show you an example. Let's load some  weibull data, and forget that it is weibull.
+Let me show you an example. Let's load some weibull data, and forget that it is weibull.
 
 ```{r}
 weib_data = RANDWEIB.DAT
@@ -207,7 +207,7 @@ With the PPCC function you can fit the data to either a gamma or weibull distrib
 PPCC(weib_data$data, 'gamma')
 ```
 
-The data could fits a gamma with shape parameter 10, best. Or..
+The data could fit a gamma with shape parameter 10, best. Or..
 
 ```{r, fig.width=6, fig.width=4}
 PPCC(weib_data$data, 'weibull')
